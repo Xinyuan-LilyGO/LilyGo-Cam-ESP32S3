@@ -95,7 +95,7 @@ void setupNetwork(bool setup_AP_Mode)
     if (setup_AP_Mode) {
 
         WiFi.mode(WIFI_AP);
-        hostName += WiFi.macAddress().substring(0, 5);
+        hostName += WiFi.macAddress().substring(12);
         WiFi.softAP(hostName.c_str());
         ipAddress = WiFi.softAPIP().toString();
         Serial.print("Started AP mode host name :");
