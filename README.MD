@@ -45,6 +45,9 @@ examples examples
 7. When the sketch cannot be uploaded, please press and hold the `BOOT` button on the board, then insert the USB, you should be able to see the port in the device manager of the computer, and then click upload sketch again
 8. When the power supply channel of `ESP32S3` is closed by mistake, please insert the USB, then press and hold the `BOOT` button of the board, then press and hold the `PWRKEY` button, the board enters the download mode, and the sketch can be uploaded normally.
 9. ⚠ **Please understand the risks you need to face before changing the peripheral voltage, otherwise please do not try to change the voltage of the camera and other onboard devices, you may face permanent damage**
+10. When you think there is a problem with the board, you can try to burn our factory firmware for testing. You can first rule out whether it is a hardware problem [FactoryFirmware](./firmware/README.MD)
+
+
 
 ## 4️⃣ Pins:
 
