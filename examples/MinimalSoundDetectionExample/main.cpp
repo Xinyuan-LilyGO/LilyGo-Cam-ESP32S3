@@ -93,7 +93,13 @@ void setup()
     /*********************************
      *  step 4 : Initialize multinet
     ***********************************/
+#if ESP_IDF_VERSION_VAL(4,4,1) == ESP_IDF_VERSION
     vad_inst = vad_create(VAD_MODE_0, VAD_SAMPLE_RATE_HZ, VAD_FRAME_LENGTH_MS);
+#elif ESP_IDF_VERSION_VAL(4,4,4) == ESP_IDF_VERSION
+    vad_inst = vad_create(VAD_MODE_0);
+#else
+#error "No support this version."
+#endif
     vad_buff = (int16_t *)malloc(VAD_BUFFER_LENGTH * sizeof(short));
     if (vad_buff == NULL) {
         Serial.println("Memory allocation failed!");
@@ -107,7 +113,13 @@ void loop()
 {
     i2s_read(I2S_CH, (char *)vad_buff, VAD_BUFFER_LENGTH * sizeof(short), &bytes_read, portMAX_DELAY);
     // Feed samples to the VAD process and get the result
+#if ESP_IDF_VERSION_VAL(4,4,1) == ESP_IDF_VERSION
     vad_state_t vad_state = vad_process(vad_inst, vad_buff);
+#elif ESP_IDF_VERSION_VAL(4,4,4) == ESP_IDF_VERSION
+    vad_state_t vad_state = vad_process(vad_inst, vad_buff, VAD_SAMPLE_RATE_HZ, VAD_FRAME_LENGTH_MS);
+#else
+#error "No support this version."
+#endif
     if (vad_state == VAD_SPEECH) {
         Serial.print(millis());
         Serial.println(":Speech detected");
