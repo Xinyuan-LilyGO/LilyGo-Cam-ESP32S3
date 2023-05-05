@@ -95,7 +95,7 @@ void setup()
     ***********************************/
 #if ESP_IDF_VERSION_VAL(4,4,1) == ESP_IDF_VERSION
     vad_inst = vad_create(VAD_MODE_0, VAD_SAMPLE_RATE_HZ, VAD_FRAME_LENGTH_MS);
-#elif ESP_IDF_VERSION_VAL(4,4,4) == ESP_IDF_VERSION
+#elif ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(4,4,1)
     vad_inst = vad_create(VAD_MODE_0);
 #else
 #error "No support this version."
@@ -115,7 +115,7 @@ void loop()
     // Feed samples to the VAD process and get the result
 #if ESP_IDF_VERSION_VAL(4,4,1) == ESP_IDF_VERSION
     vad_state_t vad_state = vad_process(vad_inst, vad_buff);
-#elif ESP_IDF_VERSION_VAL(4,4,4) == ESP_IDF_VERSION
+#elif ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(4,4,1)
     vad_state_t vad_state = vad_process(vad_inst, vad_buff, VAD_SAMPLE_RATE_HZ, VAD_FRAME_LENGTH_MS);
 #else
 #error "No support this version."
