@@ -94,8 +94,12 @@ bool setupCamera()
     }
 
 #if defined(LILYGO_ESP32S3_CAM_PIR_VOICE)
-    s->set_vflip(s, 1);
-    s->set_hmirror(s, 1);
+    if (s->id.PID == OV5640_PID) {
+        s->set_vflip(s, 0);
+    } else {
+        s->set_vflip(s, 1);
+        s->set_hmirror(s, 1);
+    }
 #endif
 
     frameSize = FRAMESIZE_QVGA;

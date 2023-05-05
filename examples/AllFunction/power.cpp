@@ -129,11 +129,11 @@ bool setupPower()
     PMU.enableDC3();
 
     // Camera working voltage, please do not change
-    PMU.setALDO1Voltage(1800);      // CAM DVDD
+    PMU.setALDO1Voltage(1500);      // CAM DVDD
     PMU.enableALDO1();
 
     // Camera working voltage, please do not change
-    PMU.setALDO2Voltage(2800);      // CAM DVDD
+    PMU.setALDO2Voltage(3000);      // CAM DVDD
     PMU.enableALDO2();
 
     // Camera working voltage, please do not change
