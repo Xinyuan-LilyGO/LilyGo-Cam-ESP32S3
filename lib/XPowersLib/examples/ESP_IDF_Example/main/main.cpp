@@ -17,8 +17,9 @@ Please do not run the example without knowing the external load voltage of the P
 it may burn your external load, please check the voltage setting before running the example,
 if there is any loss, please bear it by yourself
 */
-// #error "Running this example is known to not damage the device! Please go and uncomment this!"
-
+#ifndef XPOWERS_NO_ERROR
+#error "Running this example is known to not damage the device! Please go and uncomment this!"
+#endif
 
 static const char *TAG = "mian";
 
@@ -27,7 +28,7 @@ extern esp_err_t i2c_init(void);
 extern void pmu_isr_handler();
 
 static void pmu_hander_task(void *);
-static xQueueHandle  gpio_evt_queue = NULL;
+static QueueHandle_t  gpio_evt_queue = NULL;
 
 static void IRAM_ATTR pmu_irq_handler(void *arg)
 {

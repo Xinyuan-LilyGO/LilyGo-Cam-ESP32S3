@@ -29,10 +29,11 @@ Please do not run the example without knowing the external load voltage of the P
 it may burn your external load, please check the voltage setting before running the example,
 if there is any loss, please bear it by yourself
 */
+#ifndef XPOWERS_NO_ERROR
 #error "Running this example is known to not damage the device! Please go and uncomment this!"
-
+#endif
 // Defined using AXP2102
-#define XPOWERS_CHIP_AXP2102
+#define XPOWERS_CHIP_AXP2101
 
 #include <Wire.h>
 #include <Arduino.h>
@@ -40,8 +41,22 @@ if there is any loss, please bear it by yourself
 
 XPowersPMU PMU;
 
-const uint8_t i2c_sda = 21;
-const uint8_t i2c_scl = 22;
+#ifndef CONFIG_PMU_SDA
+#define CONFIG_PMU_SDA 21
+#endif
+
+#ifndef CONFIG_PMU_SCL
+#define CONFIG_PMU_SCL 22
+#endif
+
+#ifndef CONFIG_PMU_IRQ
+#define CONFIG_PMU_IRQ 35
+#endif
+
+const uint8_t i2c_sda = CONFIG_PMU_SDA;
+const uint8_t i2c_scl = CONFIG_PMU_SCL;
+const uint8_t pmu_irq_pin = CONFIG_PMU_IRQ;
+
 uint16_t targetVol;
 uint16_t vol = 0;
 
