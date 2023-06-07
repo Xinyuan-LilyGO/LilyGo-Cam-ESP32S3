@@ -66,13 +66,14 @@ void setup()
     wifiMulti.addAP("ssid_from_AP_3", "your_password_for_AP_3");
 
     Serial.println("Connecting Wifi...");
-    if (wifiMulti.run() == WL_CONNECTED) {
-        Serial.println("");
-        Serial.println("WiFi connected");
-        Serial.println("IP address: ");
-        Serial.println(WiFi.localIP());
+    while (WiFi.status() != WL_CONNECTED) {
+        wifiMulti.run();
     }
 
+    Serial.println("");
+    Serial.println("WiFi connected");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
 
 
     /*********************************
@@ -164,5 +165,6 @@ void setup()
 
 void loop()
 {
-    delay(10000);
+    wifiMulti.run();
+    delay(10);
 }
