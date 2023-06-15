@@ -16,6 +16,8 @@ examples examples
 
 ## 2️⃣ Quick Start
 
+#### PlatformIO
+
 1. Install [VisualStudioCode](https://code.visualstudio.com/) and [Python](https://www.python.org/)
 2. Search for the `PlatformIO` plugin in the `VisualStudioCode` extension and install it.
 3. After the installation is complete, you need to restart `VisualStudioCode`
@@ -30,6 +32,28 @@ examples examples
     - select `t-cameras3`
     - Select `Platform`
     - After making sure the board is connected to USB, click `Upload Filesystem image`
+
+#### ArduinoIDE
+
+1. Install [Arduino IDE](https://www.arduino.cc/en/software)
+2. Install [Arduino ESP32](https://docs.espressif.com/projects/arduino-esp32/en/latest/) 
+3. Copy all the folders in the `LilyGo-Cam-ESP32S3/lib` directory to `<C:\Users\UserName\Documents\Arduino\libraries>`. If there is no `libraries` directory, please create a new one. Please note that you are not copying the `lib` directory, but copying the folders in the lib directory
+4. Open ArduinoIDE -> Tools
+   - Board -> ESP32S3 Dev Module
+   - USB CDC On Boot -> Enable  ## Note that you need to change Enable to Disable when USB is not connected, so USB CDC will not prevent the board from starting
+   - CPU Frequency -> 240MHz
+   - USB DFU On Boot -> Disable
+   - Flash Mode -> QIO 80MHz
+   - Flash Size -> 16MB(128Mb)
+   - USB Firmware MSC On Boot -> Disable
+   - PSRAM -> OPI PSRAM
+   - Partition Scheme -> 16M Flash(3MB APP/9.9MB FATFS)
+   - USB Mode -> Hardware CDC and JIAG
+   - Upload Mode -> UART0/Hardware CDC
+   - Upload Speed -> 921600
+5. Insert USB into the PC and click Upload <If the upload fails, View the Tips below>
+
+
 
 
 ## 3️⃣ Tips:
