@@ -18,7 +18,12 @@
 
 void startCameraServer();
 void setupVoiceWakeup();
+
+#ifdef  PLATFORMIO_ENV
 void setupSpeechRecognition();
+#else
+#warning "Voice wake-up does not support ArduinoIDE, only supports platformio , see README"
+#endif
 
 QueueHandle_t recVocie = NULL;
 void getWakeupReason();
@@ -85,8 +90,10 @@ void setup()
     // Initialize the board power parameters
     setupPower();
 
+#ifdef  PLATFORMIO_ENV
     //Activate the voice wake-up trigger, saying "Hi, ESP" into the microphone will trigger the screen wake-up
     setupVoiceWakeup();
+#endif
 
     // Initialize the camera
     ret = setupCamera();

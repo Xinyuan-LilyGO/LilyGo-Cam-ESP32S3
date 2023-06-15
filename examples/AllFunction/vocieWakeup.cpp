@@ -6,6 +6,7 @@
  * @date      2022-09-20
  *
  */
+#ifdef  PLATFORMIO_ENV
 #include "driver/i2s.h"
 #include "dl_lib_coefgetter_if.h"
 #include "esp_wn_iface.h"
@@ -174,6 +175,9 @@ void destroyVocieWakeup()
     vTaskDelete(feedTask);
     vTaskDelete(detectTask);
 }
+
+#endif
+
 
 
 
