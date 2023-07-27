@@ -46,7 +46,14 @@ examples examples
 8. When the power supply channel of `ESP32S3` is closed by mistake, please insert the USB, then press and hold the `BOOT` button of the board, then press and hold the `PWRKEY` button, the board enters the download mode, and the sketch can be uploaded normally.
 9. ⚠ **Please understand the risks you need to face before changing the peripheral voltage, otherwise please do not try to change the voltage of the camera and other onboard devices, you may face permanent damage**
 10. When you think there is a problem with the board, you can try to burn our factory firmware for testing. You can first rule out whether it is a hardware problem [FactoryFirmware](./firmware/README.MD)
-
+11. The board uses USB as the JTAG upload port. When printing serial port information on USB_CDC_ON_BOOT configuration needs to be turned on. 
+If the port cannot be found when uploading the program or the USB has been used for other functions, the port does not appear. 
+Please enter the upload mode manually. 
+    1. Connect the board via the USB cable
+    1. Press and hold the BOOT button , While still pressing the BOOT button, press RST
+    1. Release the RST
+    1. Release the BOOT button
+    1. Upload sketch
 
 
 ## 4️⃣ Pins:
