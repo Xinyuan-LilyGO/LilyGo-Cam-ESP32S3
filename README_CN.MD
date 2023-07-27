@@ -21,6 +21,8 @@ examples
 
 ## 2️⃣ Quick Start
 
+#### PlatformIO
+
 1. 安装[VisualStudioCode](https://code.visualstudio.com/) 和 [Python](https://www.python.org/)
 2. 在`VisualStudioCode`扩展中搜索`PlatformIO`插件并安装.
 3. 安装完成后需要将`VisualStudioCode`重新启动
@@ -35,6 +37,26 @@ examples
     - 选择 `t-cameras3`
     - 选择 `Platform`
     - 在确保板子连接USB后,点击`Upload Filesystem image`
+
+#### ArduinoIDE
+
+1. 安装 [ArduinoIDE](https://www.arduino.cc/en/software)
+2. 安装 [Arduino ESP32](https://docs.espressif.com/projects/arduino-esp32/en/latest/) 
+3. 将 `T-TWR/lib` 目录内的所有文件夹拷贝到`<C:\Users\UserName\Documents\Arduino\libraries>`,如果没有`libraries`目录,请新建,请注意,不是拷贝`lib`目录,而是拷贝lib目录里面的文件夹
+4. 打开ArduinoIDE -> Tools 
+   - Board -> ESP32S3 Dev Module
+   - USB CDC On Boot -> Enable   # 注意，在不连接USB的时候你需要将Enable改为Disable，这样USB CDC 不会阻止板子的启动
+   - CPU Frequency -> 240MHz
+   - USB DFU On Boot -> Disable
+   - Flash Mode -> QIO 80MHz
+   - Flash Size -> 16MB(128Mb)
+   - USB Firmware MSC On Boot -> Disable
+   - PSRAM -> OPI PSRAM
+   - Partition Scheme -> 16M Flash(3MB APP/9.9MB FATFS)
+   - USB Mode -> Hardware CDC and JIAG
+   - Upload Mode -> UART0/Hardware CDC
+   - Upload Speed -> 921600
+5. 插入USB到PC,点击上传<如果无法顺利上传,请查看下方常见问题>
 
 
 ## 3️⃣ Tips:
