@@ -7,7 +7,7 @@
  *
  */
 
-
+#include <Wifi.h>
 #include <WebServer.h>
 #include <esp_camera.h>
 
