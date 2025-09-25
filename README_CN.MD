@@ -41,7 +41,7 @@ examples
 #### ArduinoIDE
 
 1. 安装 [ArduinoIDE](https://www.arduino.cc/en/software)
-2. 安装 [Arduino ESP32](https://docs.espressif.com/projects/arduino-esp32/en/latest/) 
+2. 安装 [Arduino ESP32](https://docs.espressif.com/projects/arduino-esp32/en/latest/)，esp32 核心版本要低于V3.0.0 ，推荐使用2.0.17 
 3. 将 `T-TWR/lib` 目录内的所有文件夹拷贝到`<C:\Users\UserName\Documents\Arduino\libraries>`,如果没有`libraries`目录,请新建,请注意,不是拷贝`lib`目录,而是拷贝lib目录里面的文件夹
 4. 打开ArduinoIDE -> Tools 
    - Board -> ESP32S3 Dev Module

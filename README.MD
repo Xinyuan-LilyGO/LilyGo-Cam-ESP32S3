@@ -36,7 +36,7 @@ examples examples
 #### ArduinoIDE
 
 1. Install [Arduino IDE](https://www.arduino.cc/en/software)
-2. Install [Arduino ESP32](https://docs.espressif.com/projects/arduino-esp32/en/latest/) 
+2. Install [Arduino ESP32](https://docs.espressif.com/projects/arduino-esp32/en/latest/), **ESP32 core version should be lower than V 3.0.0, 2.0.17 is recommended**
 3. Copy all the folders in the `LilyGo-Cam-ESP32S3/lib` directory to `<C:\Users\UserName\Documents\Arduino\libraries>`. If there is no `libraries` directory, please create a new one. Please note that you are not copying the `lib` directory, but copying the folders in the lib directory
 4. Open ArduinoIDE -> Tools
    - Board -> ESP32S3 Dev Module
