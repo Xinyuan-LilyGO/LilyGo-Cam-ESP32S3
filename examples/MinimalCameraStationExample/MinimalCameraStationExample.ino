@@ -12,6 +12,10 @@
 #include "esp_camera.h"
 #include <secrets.h>
 
+#if (ESP_ARDUINO_VERSION)  > ESP_ARDUINO_VERSION_VAL(3,0,0)
+#error "Please use ESP32 core version lower than V 3.0.0, 2.0.17 is recommended"
+#endif
+
 #define XPOWERS_CHIP_AXP2101
 #include "XPowersLib.h"
 #include "utilities.h"
