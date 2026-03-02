@@ -6,25 +6,57 @@ esphome:
     upload_speed: 921600
     monitor_speed: 115200
   on_boot:
-    priority: 600
-    then:
-      - delay: 50ms
-      - lambda: |-
-          esphome::i2c::I2CDevice dev;
-          dev.set_i2c_bus(id(bus_a));
-          dev.set_i2c_address(0x34);
-          dev.write_byte(0x84, 0x67) ? ESP_LOGI("i2c_custom", "Set DC3 Successfully.") : ESP_LOGE("i2c_custom", "Set DC3 Failed!");
-          dev.write_byte(0x92, 0x0d) ? ESP_LOGI("i2c_custom", "Set ALDO1 Successfully.") : ESP_LOGE("i2c_custom", "Set ALDO1 Failed!");
-          dev.write_byte(0x93, 0x17) ? ESP_LOGI("i2c_custom", "Set ALDO2 Successfully.") : ESP_LOGE("i2c_custom", "Set ALDO2 Failed!");
-          dev.write_byte(0x95, 0x19) ? ESP_LOGI("i2c_custom", "Set ALDO4 Successfully.") : ESP_LOGE("i2c_custom", "Set ALDO4 Failed!");
-          dev.write_byte(0x94, 0x1c) ? ESP_LOGI("i2c_custom", "Set ALDO3 Successfully.") : ESP_LOGE("i2c_custom", "Set ALDO3 Failed!");
-          dev.write_byte(0x96, 0x1c) ? ESP_LOGI("i2c_custom", "Set BLDO1 Successfully.") : ESP_LOGE("i2c_custom", "Set BLDO1 Failed!");
-          dev.write_byte(0x80, 0x1d) ? ESP_LOGI("i2c_custom", "Enable DC Successfully.") : ESP_LOGE("i2c_custom", "Enable DC Failed!");
-          dev.write_byte(0x90, 0x1f) ? ESP_LOGI("i2c_custom", "Set LDO ON Successfully.") : ESP_LOGE("i2c_custom", "Set LDO ON Failed!");
-          dev.write_byte(0x30, 0x3d) ? ESP_LOGI("i2c_custom", "Set TS Pin Detection Disabled Successfully.") : ESP_LOGE("i2c_custom", "Set TS Pin Detection Disabled Failed!");
-          dev.write_byte(0x62, 0x00) ? ESP_LOGI("i2c_custom", "Set Charger Constant Current Successfully.") : ESP_LOGE("i2c_custom", "Set Charger Constant Current Failed!");
-          dev.write_byte(0x64, 0x02) ? ESP_LOGI("i2c_custom", "Set Charge Target Voltage Successfully.") : ESP_LOGE("i2c_custom", "Set Charge Target Voltage Failed!");
-          dev.write_byte(0x69, 0x15) ? ESP_LOGI("i2c_custom", "Set Charging LED Mode Successfully.") : ESP_LOGE("i2c_custom", "Set Charging LED Mode Failed!");
+      - priority: 600
+        then:
+          - delay: 100ms
+          - lambda: |-
+              esphome::i2c::I2CDevice dev;
+              dev.set_i2c_bus(id(bus_a));
+              dev.set_i2c_address(0x34);
+
+              uint8_t flag = 0;
+              if (dev.read_byte(0x04, &flag)) {  // 讀 0x04
+                ESP_LOGI("pmu_check", "read 0x04 : 0x%02X", flag);
+                if (flag != 0x01) { 
+                  ESP_LOGI("pmu_init", "First power-up detected → Initializing PMU settings");
+
+                  dev.write_byte(0x84, 0x67) ? ESP_LOGI("i2c_custom", "Set DC3 Successfully.") : ESP_LOGE("i2c_custom", "Set DC3 Failed!");
+                  dev.write_byte(0x92, 0x0d) ? ESP_LOGI("i2c_custom", "Set ALDO1 Successfully.") : ESP_LOGE("i2c_custom", "Set ALDO1 Failed!");
+                  dev.write_byte(0x93, 0x17) ? ESP_LOGI("i2c_custom", "Set ALDO2 Successfully.") : ESP_LOGE("i2c_custom", "Set ALDO2 Failed!");
+                  dev.write_byte(0x95, 0x19) ? ESP_LOGI("i2c_custom", "Set ALDO4 Successfully.") : ESP_LOGE("i2c_custom", "Set ALDO4 Failed!");
+                  dev.write_byte(0x94, 0x1c) ? ESP_LOGI("i2c_custom", "Set ALDO3 Successfully.") : ESP_LOGE("i2c_custom", "Set ALDO3 Failed!");
+                  dev.write_byte(0x96, 0x1c) ? ESP_LOGI("i2c_custom", "Set BLDO1 Successfully.") : ESP_LOGE("i2c_custom", "Set BLDO1 Failed!");
+                  dev.write_byte(0x80, 0x1d) ? ESP_LOGI("i2c_custom", "Enable DC Successfully.") : ESP_LOGE("i2c_custom", "Enable DC Failed!");
+                  dev.write_byte(0x90, 0x1f) ? ESP_LOGI("i2c_custom", "Set LDO ON Successfully.") : ESP_LOGE("i2c_custom", "Set LDO ON Failed!");
+                  dev.write_byte(0x30, 0x3d) ? ESP_LOGI("i2c_custom", "Set TS Pin Detection Disabled Successfully.") : ESP_LOGE("i2c_custom", "Set TS Pin Detection Disabled Failed!");
+                  dev.write_byte(0x62, 0x00) ? ESP_LOGI("i2c_custom", "Set Charger Constant Current Successfully.") : ESP_LOGE("i2c_custom", "Set Charger Constant Current Failed!");
+                  dev.write_byte(0x64, 0x02) ? ESP_LOGI("i2c_custom", "Set Charge Target Voltage Successfully.") : ESP_LOGE("i2c_custom", "Set Charge Target Voltage Failed!");
+                  dev.write_byte(0x69, 0x15) ? ESP_LOGI("i2c_custom", "Set Charging LED Mode Successfully.") : ESP_LOGE("i2c_custom", "Set Charging LED Mode Failed!");
+
+                  delay(2000); 
+
+                  if (dev.write_byte(0x04, 0x01)) {
+                    ESP_LOGI("pmu_init", "Wrote 0x01 to 0x04");
+                  } else {
+                    ESP_LOGE("pmu_init", "Failed to write 0x04");
+                  }
+
+                  delay(500);
+                  ESP_LOGI("pmu_init", "PMU initialization complete → Rebooting...");
+                  esp_restart();
+                } else {
+                  ESP_LOGI("pmu_check", "Flag is already 0x01 → Power has been initialized, skipping PMU settings");
+                }
+              } else {
+                ESP_LOGE("pmu_check", "Failed to read 0x04! Assuming first power-up");
+              }
+
+      - priority: -100
+        then:
+          - delay: 1000ms
+          - logger.log: "Normal startup process - camera should be initialized soon"
+
+
 psram:
   mode: octal
   speed: 40MHz
@@ -85,20 +117,6 @@ display:
     address: 0x3C
     rotation: 180
 
-# Enable Home Assistant API
-api:
-  encryption:
-    key: "fjtvWEyqu+EdXqBDz2SVXU6+fR9t453PUBcHO+QiRCA="  # Replace with your API encryption key
-
-ota:
-  - platform: esphome
-    password: "your wifi password"  # Replace with your OTA password
-
 wifi:
-  ssid: !secret wifi_ssid  # Replace with your Wi-Fi SSID stored in secrets.yaml
-  password: !secret wifi_password  # Replace with your Wi-Fi password stored in secrets.yaml
-
-  # Enable fallback hotspot (captive portal) in case Wi-Fi connection fails
-  ap:
-    ssid: "Esp32-S3 Fallback Hotspot"
-    password: "12345678"  # Replace with your fallback hotspot password
+  ssid: "Your SSID"  # Replace with your Wi-Fi SSID stored in secrets.yaml
+  password: "Your Password"   # Replace with your Wi-Fi password stored in secrets.yaml

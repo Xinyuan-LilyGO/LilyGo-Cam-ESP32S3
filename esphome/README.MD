@@ -7,10 +7,6 @@ INFO Generating C++ source...
 INFO Compiling app... Build path: /config/.esphome/build/lilygo-esp32s3-camera-20260202
 Processing lilygo-esp32s3-camera-20260202 (board: esp32s3box; framework: arduino, espidf; platform: https://github.com/pioarduino/platform-espressif32/releases/download/55.03.37/platform-espressif32.zip)
 --------------------------------------------------------------------------------
-Tool Manager: Installing file:///config/.esphome/build/lilygo-esp32s3-camera-20260202/arduino_libs_stub
-INFO Installing file:///config/.esphome/build/lilygo-esp32s3-camera-20260202/arduino_libs_stub
-Tool Manager: framework-arduinoespressif32-libs@5.5.2 has been installed!
-INFO framework-arduinoespressif32-libs@5.5.2 has been installed!
 HARDWARE: ESP32S3 240MHz, 320KB RAM, 4MB Flash
  - contrib-piohome @ 3.4.4 
  - framework-arduinoespressif32 @ 3.3.7 
@@ -74,8 +70,8 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/src/main.cpp.o
 Generating LD script .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_system/ld/memory.ld.in
 Generating LD script .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_system/ld/sections.ld.in
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/app_trace/app_trace.c.o
-Generating LD script .pioenvs/lilygo-esp32s3-camera-20260202/memory.ld
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/app_trace/app_trace_util.c.o
+Generating LD script .pioenvs/lilygo-esp32s3-camera-20260202/memory.ld
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/app_trace/host_file_io.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/app_trace/port/port_uart.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/app_update/esp_ota_ops.c.o
@@ -138,10 +134,10 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/driver/deprecated/pcnt_legacy.
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/driver/deprecated/rmt_legacy.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/driver/deprecated/sigma_delta_legacy.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/driver/deprecated/rtc_temperature_legacy.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/cxx/libcxx.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/cxx/libcxx.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/driver/touch_sensor/touch_sensor_common.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/cxx/libcxx.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/driver/touch_sensor/esp32s3/touch_sensor.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/cxx/libcxx.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/driver/twai/twai.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/efuse/esp32s3/esp_efuse_table.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/efuse/esp32s3/esp_efuse_fields.c.o
@@ -158,9 +154,9 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp-tls/esp_tls_error_capture.
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp-tls/esp_tls_platform_port.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp-tls/esp_tls_mbedtls.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_adc/adc_oneshot.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/driver/libdriver.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_adc/adc_common.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_adc/adc_cali.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/driver/libdriver.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_adc/adc_cali_curve_fitting.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/driver/libdriver.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_adc/deprecated/esp_adc_cal_common_legacy.c.o
@@ -180,33 +176,33 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_coex/src/coexist_debug.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_common/src/esp_err_to_name.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_cam/esp_cam_ctlr.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_cam/dvp_share_ctrl.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_app_format/libesp_app_format.a
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_app_format/libesp_app_format.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_cam/dvp/src/esp_cam_ctlr_dvp_gdma.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_cam/dvp/src/esp_cam_ctlr_dvp_cam.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_bootloader_format/libesp_bootloader_format.a
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_app_format/libesp_app_format.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_bootloader_format/libesp_bootloader_format.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_app_format/libesp_app_format.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_gpio/src/gpio.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_gpio/src/gpio_glitch_filter_ops.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_gpio/src/rtc_io.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_adc/libesp_adc.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_gpio/src/dedic_gpio.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_adc/libesp_adc.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_gpio/src/dedic_gpio.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_gpio/src/gpio_pin_glitch_filter.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_gptimer/src/gptimer.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_gptimer/src/gptimer_common.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_i2c/i2c_master.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp-tls/libesp-tls.a
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_coex/libesp_coex.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp-tls/libesp-tls.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_coex/libesp_coex.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_i2c/i2c_master.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_coex/libesp_coex.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_i2c/i2c_common.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_i2c/i2c_slave.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_coex/libesp_coex.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_i2s/i2s_common.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_i2s/i2s_std.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_i2s/i2s_pdm.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_cam/libesp_driver_cam.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_cam/libesp_driver_cam.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_i2s/i2s_pdm.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_i2s/i2s_tdm.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_i2s/i2s_platform.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_gpio/libesp_driver_gpio.a
@@ -219,8 +215,8 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_mcpwm/src/mcpwm_cmp
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_mcpwm/src/mcpwm_com.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_mcpwm/src/mcpwm_fault.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_i2c/libesp_driver_i2c.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_i2c/libesp_driver_i2c.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_mcpwm/src/mcpwm_gen.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_i2c/libesp_driver_i2c.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_mcpwm/src/mcpwm_oper.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_mcpwm/src/mcpwm_sync.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_mcpwm/src/mcpwm_timer.c.o
@@ -241,10 +237,10 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_sdmmc/src/sdmmc_tra
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_mcpwm/libesp_driver_mcpwm.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_mcpwm/libesp_driver_mcpwm.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_sdmmc/src/sdmmc_host.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_pcnt/libesp_driver_pcnt.a
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_common/libesp_common.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_pcnt/libesp_driver_pcnt.a
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_pcnt/libesp_driver_pcnt.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_common/libesp_common.a
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_pcnt/libesp_driver_pcnt.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_sdspi/src/sdspi_crc.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_sdspi/src/sdspi_host.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_sdspi/src/sdspi_transaction.c.o
@@ -254,8 +250,8 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_spi/src/gpspi/spi_s
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_spi/src/gpspi/spi_slave_hd.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_touch_sens/common/touch_sens_common.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_sdm/libesp_driver_sdm.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_touch_sens/hw_ver2/touch_version_specific.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_sdm/libesp_driver_sdm.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_touch_sens/hw_ver2/touch_version_specific.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_tsens/src/temperature_sensor.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_rmt/libesp_driver_rmt.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_rmt/libesp_driver_rmt.a
@@ -263,20 +259,20 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_twai/esp_twai.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_twai/esp_twai_onchip.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_uart/src/uart.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_sdspi/libesp_driver_sdspi.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_sdspi/libesp_driver_sdspi.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_uart/src/uart_wakeup.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_sdmmc/libesp_driver_sdmmc.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_sdmmc/libesp_driver_sdmmc.a
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_sdspi/libesp_driver_sdspi.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_uart/src/uart_wakeup.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_uart/src/uhci.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_uart/src/uart_vfs.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_usb_serial_jtag/src/usb_serial_jtag.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_usb_serial_jtag/src/usb_serial_jtag_connection_monitor.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_driver_usb_serial_jtag/src/usb_serial_jtag_vfs.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_spi/libesp_driver_spi.a
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_touch_sens/libesp_driver_touch_sens.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_spi/libesp_driver_spi.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_touch_sens/libesp_driver_touch_sens.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_eth/src/esp_eth.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_touch_sens/libesp_driver_touch_sens.a
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_touch_sens/libesp_driver_touch_sens.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_eth/src/phy/esp_eth_phy_802_3.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_tsens/libesp_driver_tsens.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_tsens/libesp_driver_tsens.a
@@ -291,18 +287,18 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_gdbstub/src/gdbstub_transp
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_gdbstub/src/packet.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_gdbstub/src/port/xtensa/gdbstub_xtensa.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_gdbstub/src/port/xtensa/gdbstub-entry.S.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_uart/libesp_driver_uart.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_gdbstub/src/port/xtensa/xt_debugexception.S.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_uart/libesp_driver_uart.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_uart/libesp_driver_uart.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hid/src/esp_hidd.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hid/src/esp_hidh.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_eth/libesp_eth.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hid/src/esp_hid_common.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_eth/libesp_eth.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hid/src/esp_hidh.c.o
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hid/src/esp_hid_common.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_http_client/esp_http_client.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_usb_serial_jtag/libesp_driver_usb_serial_jtag.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_http_client/lib/http_auth.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_http_client/lib/http_header.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_usb_serial_jtag/libesp_driver_usb_serial_jtag.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_driver_usb_serial_jtag/libesp_driver_usb_serial_jtag.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_http_client/lib/http_utils.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_event/libesp_event.a
@@ -316,10 +312,10 @@ Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_gdbstub/libesp_gdb
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_gdbstub/libesp_gdbstub.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_http_server/src/httpd_ws.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_http_server/src/util/ctrl_sock.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_hid/libesp_hid.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_hid/libesp_hid.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_https_ota/src/esp_https_ota.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_hid/libesp_hid.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/cpu.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_hid/libesp_hid.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/port/esp32s3/esp_cpu_intr.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/esp_memory_utils.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/port/esp32s3/cpu_region_protect.c.o
@@ -332,15 +328,15 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/periph_ctrl.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/revision.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/rtc_module.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/regi2c_ctrl.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_http_server/libesp_http_server.a
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_http_client/libesp_http_client.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/esp_gpio_reserve.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_http_client/libesp_http_client.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_http_server/libesp_http_server.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/sar_periph_ctrl_common.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/port/esp32s3/io_mux.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_http_server/libesp_http_server.a
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_https_ota/libesp_https_ota.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/sar_periph_ctrl_common.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_https_ota/libesp_https_ota.a
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_http_server/libesp_http_server.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/port/esp32s3/io_mux.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/port/esp32s3/esp_clk_tree.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/dma/esp_dma_utils.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_hw_support/dma/gdma_link.c.o
@@ -391,8 +387,8 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_lcd/rgb/esp_lcd_panel_rgb.
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_mm/esp_mmu_map.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_hw_support/libesp_hw_support.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_mm/port/esp32s3/ext_mem_layout.c.o
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_hw_support/libesp_hw_support.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_mm/esp_cache_msync.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_hw_support/libesp_hw_support.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_mm/esp_cache_utils.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_mm/heap_align_hw.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_netif/esp_netif_handlers.c.o
@@ -438,20 +434,20 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_rom/patches/esp_rom_longjm
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_rom/patches/esp_rom_systimer.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_rom/patches/esp_rom_wdt.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_rom/patches/esp_rom_cache_esp32s2_esp32s3.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_phy/libesp_phy.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_phy/libesp_phy.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_rom/patches/esp_rom_cache_writeback_esp32s3.S.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_security/src/init.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_ringbuf/libesp_ringbuf.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_ringbuf/libesp_ringbuf.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_rom/patches/esp_rom_cache_writeback_esp32s3.S.o
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_security/src/init.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_security/src/esp_hmac.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_phy/libesp_phy.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_security/src/esp_ds.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_security/src/esp_crypto_lock.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_phy/libesp_phy.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_security/src/esp_crypto_periph_clk.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_psram/libesp_psram.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_system/esp_err.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_system/crosscore_int.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_psram/libesp_psram.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_system/crosscore_int.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_system/esp_ipc.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_pm/libesp_pm.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_system/esp_system_console.c.o
@@ -510,8 +506,8 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_wifi/src/wifi_netif.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_wifi/src/wifi_default_ap.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_wifi/esp32s3/esp_adapter.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_wifi/regulatory/esp_wifi_regulatory.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_system/libesp_system.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp_wifi/src/smartconfig_ack.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_system/libesp_system.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_system/libesp_system.a
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_timer/libesp_timer.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_timer/libesp_timer.a
@@ -519,9 +515,9 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/managed_components/espressif__
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/managed_components/espressif__esp32-camera/conversions/to_jpg.cpp.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/managed_components/espressif__esp32-camera/conversions/to_bmp.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/managed_components/espressif__esp32-camera/conversions/jpge.cpp.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/managed_components/espressif__esp32-camera/driver/esp_camera.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_vfs_console/libesp_vfs_console.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/esp_vfs_console/libesp_vfs_console.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/managed_components/espressif__esp32-camera/driver/esp_camera.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/managed_components/espressif__esp32-camera/driver/cam_hal.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/managed_components/espressif__esp32-camera/driver/sensor.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/managed_components/espressif__esp32-camera/sensors/ov2640.c.o
@@ -562,8 +558,8 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/fatfs/diskio/diskio_sdmmc.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/fatfs/vfs/vfs_fat.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/espressif__esp32-camera/libespressif__esp32-camera.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/fatfs/vfs/vfs_fat_sdmmc.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/fatfs/vfs/vfs_fat_spiflash.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/espressif__esp32-camera/libespressif__esp32-camera.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/fatfs/vfs/vfs_fat_spiflash.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/base64.cpp.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/cbuf.cpp.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/ColorFormat.c.o
@@ -571,10 +567,10 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/chip-debug-report.cpp.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp32-hal-adc.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp32-hal-bt.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp32-hal-cpu.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/espressif__mdns/libespressif__mdns.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/espressif__mdns/libespressif__mdns.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp32-hal-dac.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp32-hal-gpio.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/espressif__mdns/libespressif__mdns.a
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/espressif__mdns/libespressif__mdns.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp32-hal-hosted.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp32-hal-i2c.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/esp32-hal-i2c-ng.c.o
@@ -711,16 +707,16 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/http_parser/http_parser.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/json/cJSON/cJSON.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/json/cJSON/cJSON_Utils.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/hal/libhal.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/hal/libhal.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/os/log_timestamp.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/hal/libhal.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/log_timestamp_common.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/os/log_lock.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/buffer/log_buffers.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/os/util.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/util.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/log_format_text.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/json/libjson.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/log_print.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/json/libjson.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/json/libjson.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/log.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/http_parser/libhttp_parser.a
@@ -728,22 +724,22 @@ Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/http_parser/libhttp_par
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/heap/libheap.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/os/log_write.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/heap/libheap.a
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/framework-arduinoespressif32/libframework-arduinoespressif32.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/log_level/log_level.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/log/src/log_level/tag_log_level/tag_log_level.c.o
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/framework-arduinoespressif32/libframework-arduinoespressif32.a
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/framework-arduinoespressif32/libframework-arduinoespressif32.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/apps/sntp/sntp.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/api/api_lib.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/api/api_msg.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/api/err.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/api/if_api.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/framework-arduinoespressif32/libframework-arduinoespressif32.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/api/netbuf.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/api/netdb.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/api/netifapi.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/api/sockets.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/api/tcpip.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/apps/sntp/sntp.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/log/liblog.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/apps/sntp/sntp.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/log/liblog.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/apps/netbiosns/netbiosns.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/lwip/lwip/src/core/def.c.o
@@ -841,19 +837,19 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/getentropy.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/termios.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/stdatomic.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/time.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/libmbedtls.a
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/libmbedtls.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/sysconf.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/realpath.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/libmbedtls.a
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/lwip/liblwip.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/scandir.c.o
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/libmbedtls.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/syscalls.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/reent_syscalls.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/lwip/liblwip.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/port/esp_time_impl.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/lwip/liblwip.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/port/xtensa/stdatomic_s32c1i.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/flockfile.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/reent_init.c.o
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/lwip/liblwip.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/newlib/src/newlib_init.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/nvs_flash/src/nvs_api.cpp.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/nvs_flash/src/nvs_cxx_api.cpp.o
@@ -886,8 +882,8 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/rt/FreeRTOS_POSIX_utils.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/protobuf-c/libprotobuf-c.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/protobuf-c/libprotobuf-c.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/sdmmc/sdmmc_cmd.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/sdmmc/sdmmc_common.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/nvs_sec_provider/libnvs_sec_provider.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/sdmmc/sdmmc_common.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/nvs_sec_provider/libnvs_sec_provider.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/sdmmc/sdmmc_init.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/sdmmc/sdmmc_io.c.o
@@ -903,10 +899,10 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/gpio_periph.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/uart_periph.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/adc_periph.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/dedic_gpio_periph.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/gdma_periph.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/rt/librt.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/spi_periph.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/rt/librt.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/gdma_periph.c.o
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/spi_periph.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/ledc_periph.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/pcnt_periph.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/soc/esp32s3/rmt_periph.c.o
@@ -967,16 +963,16 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/tcp_transport/transport_socks_
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/tcp_transport/transport_ws.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/touch_element/touch_element.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/touch_element/touch_button.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/touch_element/touch_slider.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/spi_flash/libspi_flash.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/touch_element/touch_slider.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/spi_flash/libspi_flash.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/touch_element/touch_matrix.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/usb/hcd_dwc.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/usb/enum.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/spiffs/libspiffs.a
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/spiffs/libspiffs.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/usb/hub.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/usb/usb_helpers.c.o
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/spiffs/libspiffs.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/usb/usb_host.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/usb/usb_private.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/usb/usbh.c.o
@@ -995,9 +991,9 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/wear_levelling/WL_Flash.cpp.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/wear_levelling/crc32.cpp.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/usb/libusb.a
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/tcp_transport/libtcp_transport.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/wear_levelling/wear_levelling.cpp.o
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/tcp_transport/libtcp_transport.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/usb/libusb.a
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/tcp_transport/libtcp_transport.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/wear_levelling/wear_levelling.cpp.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/wpa_supplicant/port/os_xtensa.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/wpa_supplicant/port/eloop.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/wpa_supplicant/src/ap/ap_config.c.o
@@ -1110,9 +1106,9 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/3rdparty/evere
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/3rdparty/everest/library/x25519.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/3rdparty/everest/library/Hacl_Curve25519_joined.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/aes.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/aesni.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/xtensa/libxtensa.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/xtensa/libxtensa.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/aesni.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/aesce.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/aria.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/asn1parse.c.o
@@ -1120,16 +1116,16 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/asn1wr
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/base64.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/bignum.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/bignum_core.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/mbedtls/3rdparty/everest/libeverest.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/bignum_mod.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/wpa_supplicant/libwpa_supplicant.a
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/mbedtls/3rdparty/everest/libeverest.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/mbedtls/3rdparty/everest/libeverest.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/bignum_mod_raw.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/wpa_supplicant/libwpa_supplicant.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/block_cipher.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/camellia.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/ccm.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/chacha20.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/wpa_supplicant/libwpa_supplicant.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/chacha20.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/chachapoly.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/cipher.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/cipher_wrap.c.o
@@ -1234,8 +1230,8 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/ssl_tl
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/ssl_tls12_server.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/ssl_tls13_keys.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/mbedtls/library/libmbedcrypto.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/ssl_tls13_server.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/mbedtls/library/libmbedcrypto.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/ssl_tls13_server.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/ssl_tls13_client.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/mbedtls/library/ssl_tls13_generic.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/mbedtls/port/mbedtls_debug.c.o
@@ -1269,8 +1265,8 @@ Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/main/libmai
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/main/libmain.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/src/bootloader_random_esp32s3.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/mbedtls/3rdparty/p256-m/libp256m.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/bootloader_flash/src/bootloader_flash.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/mbedtls/3rdparty/p256-m/libp256m.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/bootloader_flash/src/bootloader_flash.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/bootloader_flash/src/flash_qio_mode.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/bootloader_flash/src/bootloader_flash_config_esp32s3.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/src/bootloader_utility.c.o
@@ -1279,8 +1275,8 @@ Archiving .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/mbedtls/librar
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/src/esp_image_format.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/src/bootloader_sha.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/src/bootloader_init.c.o
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/mbedtls/library/libmbedtls.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/src/bootloader_clock_loader.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/esp-idf/mbedtls/mbedtls/library/libmbedtls.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/src/bootloader_console.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/src/bootloader_console_loader.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/bootloader_support/src/esp32s3/bootloader_soc.c.o
@@ -1304,9 +1300,9 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_hw_support/port
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_hw_support/esp_memory_utils.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_hw_support/port/esp32s3/cpu_region_protect.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_hw_support/port/esp32s3/rtc_clk.c.o
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_hw_support/port/esp32s3/rtc_clk_init.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_bootloader_format/libesp_bootloader_format.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_bootloader_format/libesp_bootloader_format.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_hw_support/port/esp32s3/rtc_clk_init.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_hw_support/port/esp32s3/rtc_init.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_hw_support/port/esp32s3/rtc_sleep.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_hw_support/port/esp32s3/rtc_time.c.o
@@ -1316,11 +1312,11 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_rom/patches/esp
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/efuse/libefuse.a
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/bootloader_support/libbootloader_support.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/efuse/libefuse.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_rom/patches/esp_rom_crc.c.o
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_common/libesp_common.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_common/libesp_common.a
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_rom/patches/esp_rom_crc.c.o
-Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_rom/patches/esp_rom_uart.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/bootloader_support/libbootloader_support.a
+Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_rom/patches/esp_rom_uart.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_rom/patches/esp_rom_spiflash.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_rom/patches/esp_rom_efuse.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp_rom/patches/esp_rom_gpio.c.o
@@ -1336,18 +1332,18 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/hal/efuse_hal.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/hal/esp32s3/efuse_hal.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/hal/mmu_hal.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/hal/cache_hal.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_hw_support/libesp_hw_support.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/log/src/noos/log_timestamp.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_hw_support/libesp_hw_support.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/log/src/log_timestamp_common.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_hw_support/libesp_hw_support.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/log/src/noos/log_lock.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/log/src/buffer/log_buffers.c.o
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_rom/libesp_rom.a
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_rom/libesp_rom.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/log/src/noos/util.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_rom/libesp_rom.a
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_system/libesp_system.a
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_system/libesp_system.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/log/src/util.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/esp_rom/libesp_rom.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/log/src/log_format_text.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/log/src/log_print.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/log/src/log.c.o
@@ -1356,8 +1352,8 @@ Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/hal/libhal.
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/lldesc.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/dport_access_common.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/interrupts.c.o
-Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/hal/libhal.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/gpio_periph.c.o
+Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/hal/libhal.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/uart_periph.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/adc_periph.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/dedic_gpio_periph.c.o
@@ -1369,8 +1365,8 @@ Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/rmt_per
 Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/micro-ecc/libmicro-ecc.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/sdm_periph.c.o
 Indexing .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/micro-ecc/libmicro-ecc.a
-Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/log/liblog.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/i2s_periph.c.o
+Archiving .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/esp-idf/log/liblog.a
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/i2c_periph.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/temperature_sensor_periph.c.o
 Compiling .pioenvs/lilygo-esp32s3-camera-20260202/bootloader/soc/esp32s3/timer_periph.c.o
@@ -1401,23 +1397,23 @@ Linking .pioenvs/lilygo-esp32s3-camera-20260202/firmware.elf
 ┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
 ┃ Memory Type/Section ┃ Used [bytes] ┃ Used [%] ┃ Remain [bytes] ┃ Total [bytes] ┃
 ┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
-│ Flash Code          │       657008 │          │                │               │
-│    .text            │       657008 │          │                │               │
-│ Flash Data          │       124924 │          │                │               │
-│    .rodata          │       124668 │          │                │               │
+│ Flash Code          │       657548 │          │                │               │
+│    .text            │       657548 │          │                │               │
+│ Flash Data          │       125276 │          │                │               │
+│    .rodata          │       125020 │          │                │               │
 │    .appdesc         │          256 │          │                │               │
-│ DIRAM               │       106923 │    31.29 │         234837 │        341760 │
+│ DIRAM               │       106939 │    31.29 │         234821 │        341760 │
 │    .text            │        58143 │    17.01 │                │               │
 │    .data            │        28164 │     8.24 │                │               │
-│    .bss             │        20616 │     6.03 │                │               │
+│    .bss             │        20632 │     6.04 │                │               │
 │ IRAM                │        16384 │    100.0 │              0 │         16384 │
 │    .text            │        15356 │    93.73 │                │               │
 │    .vectors         │         1028 │     6.27 │                │               │
 └─────────────────────┴──────────────┴──────────┴────────────────┴───────────────┘
-Total image size: 884623 bytes (.bin may be padded larger)
+Total image size: 885515 bytes (.bin may be padded larger)
 Note: The reported total sizes may be smaller than those in the technical reference manual due to reserved memory and application configuration. The total flash size available for the application is not included by default, as it cannot be reliably determined due to the presence of other data like the bootloader, partition table, and application partition size.
-RAM:   [=         ]  14.9% (used 48780 bytes from 327680 bytes)
-Flash: [=====     ]  48.2% (used 884367 bytes from 1835008 bytes)
+RAM:   [=         ]  14.9% (used 48796 bytes from 327680 bytes)
+Flash: [=====     ]  48.2% (used 885259 bytes from 1835008 bytes)
 Building .pioenvs/lilygo-esp32s3-camera-20260202/firmware.bin
 Creating ESP32S3 image...
 Successfully created ESP32S3 image.
@@ -1430,24 +1426,21 @@ Using FLASH_EXTRA_IMAGES from PlatformIO environment
 Merging binaries into /config/.esphome/build/lilygo-esp32s3-camera-20260202/.pioenvs/lilygo-esp32s3-camera-20260202/firmware.factory.bin
 Merging binaries with esptool
 SHA digest in image updated.
-Wrote 0xe8020 bytes to file '/config/.esphome/build/lilygo-esp32s3-camera-20260202/.pioenvs/lilygo-esp32s3-camera-20260202/firmware.factory.bin', ready to flash to offset 0x0.
+Wrote 0xe83a0 bytes to file '/config/.esphome/build/lilygo-esp32s3-camera-20260202/.pioenvs/lilygo-esp32s3-camera-20260202/firmware.factory.bin', ready to flash to offset 0x0.
 Successfully created /config/.esphome/build/lilygo-esp32s3-camera-20260202/.pioenvs/lilygo-esp32s3-camera-20260202/firmware.factory.bin
 esp32_copy_ota_bin([".pioenvs/lilygo-esp32s3-camera-20260202/firmware.bin"], [".pioenvs/lilygo-esp32s3-camera-20260202/firmware.elf"])
 Copied firmware to /config/.esphome/build/lilygo-esp32s3-camera-20260202/.pioenvs/lilygo-esp32s3-camera-20260202/firmware.ota.bin
-======================== [SUCCESS] Took 1144.69 seconds ========================
-INFO Build Info: config_hash=0x953b984e build_time_str=2026-02-28 02:08:28 +0000
-INFO Successfully compiled program.
+======================== [SUCCESS] Took 1114.68 seconds ========================
 ```
 
 
 # Run log
 
 ```bash
-
-« ESP-ROM:esp32s3-20210327
+ESP-ROM:esp32s3-20210327
 Build:Mar 27 2021
-rst:0x15 (USB_UART_CHIP_RESET),boot:0x8 (SPI_FAST_FLASH_BOOT)
-Saved PC:0x40378d0b
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4202d1fd
 SPIWP:0xee
 mode:DIO, clock div:1
 load:0x3fce2820,len:0x15c8
@@ -1456,55 +1449,107 @@ load:0x403cb700,len:0x2f34
 entry 0x403c8918
 I (24) boot: ESP-IDF 5.5.2 2nd stage bootloader
 I (24) boot: compile time Feb 28 2026 02:26:49
-I (25) boot: Multicore bootloader
-I (25) boot: chip revision: v0.2
-I (25) boot: efuse block revision: v1.3
+I (24) boot: Multicore bootloader
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v1.3
 I (25) boot.esp32s3: Boot SPI Speed : 80MHz
 I (25) boot.esp32s3: SPI Mode       : DIO
-I (26) boot.esp32s3: SPI Flash Size : 4MB
-I (26) boot: Enabling RNG early entropy source...
+I (25) boot.esp32s3: SPI Flash Size : 4MB
+I (25) boot: Enabling RNG early entropy source...
 I (26) boot: Partition Table:
 I (26) boot: ## Label            Usage          Type ST Offset   Length
 I (26) boot:  0 nvs              WiFi data        01 02 00009000 00005000
 I (27) boot:  1 otadata          OTA data         01 00 0000e000 00002000
 I (27) boot:  2 app0             OTA app          00 10 00010000 001c0000
-I (28) boot:  3 app1             OTA app          00 11 001d0000 001c0000
+I (27) boot:  3 app1             OTA app          00 11 001d0000 001c0000
 I (28) boot:  4 eeprom           Unknown data     01 99 00390000 00001000
 I (28) boot:  5 spiffs           Unknown data     01 82 00391000 0000f000
 I (29) boot: End of partition table
-I (29) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=1e7fch (124924) map
-I (52) esp_image: segment 1: paddr=0002e824 vaddr=3fc96400 size=017f4h (  6132) load
-I (53) esp_image: segment 2: paddr=00030020 vaddr=42000020 size=a0670h (657008) map
-I (170) esp_image: segment 3: paddr=000d0698 vaddr=3fc97bf4 size=05610h ( 22032) load
-I (174) esp_image: segment 4: paddr=000d5cb0 vaddr=40374000 size=12320h ( 74528) load
-I (191) esp_image: segment 5: paddr=000e7fd8 vaddr=50000000 size=00020h (    32) load
-I (199) boot: Loaded app from partition at offset 0x10000
-I (199) boot: Disabling RNG early entropy source...
+I (29) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=1e95ch (125276) map
+I (52) esp_image: segment 1: paddr=0002e984 vaddr=3fc96400 size=01694h (  5780) load
+I (53) esp_image: segment 2: paddr=00030020 vaddr=42000020 size=a088ch (657548) map
+I (170) esp_image: segment 3: paddr=000d08b4 vaddr=3fc97a94 size=05770h ( 22384) load
+I (175) esp_image: segment 4: paddr=000d602c vaddr=40374000 size=12320h ( 74528) load
+I (191) esp_image: segment 5: paddr=000e8354 vaddr=50000000 size=00020h (    32) load
+I (200) boot: Loaded app from partition at offset 0x10000
+I (200) boot: Disabling RNG early entropy source...
+[I][logger:118]: Log initialized
+[I][app:091]: Running through setup()
+[I][i2c.idf:206]: Performing bus recovery
+[D][binary_sensor:044]: 'ttgocam2 PIR' >> ON
+[C][component:278]: Setup esp32_camera took 207ms
+[C][component:278]: Setup display took 124ms
+[C][wifi:610]: Starting
+[D][wifi:1263]: Starting scan
+[C][component:278]: Setup wifi took 56ms
+[I][app:138]: setup() finished successfully!
+[I][pmu_check:020]: read 0x04 : 0x00
+[I][pmu_init:022]: First power-up detected → Initializing PMU settings
+[I][i2c_custom:024]: Set DC3 Successfully.
+[I][i2c_custom:025]: Set ALDO1 Successfully.
+[I][i2c_custom:026]: Set ALDO2 Successfully.
+[I][i2c_custom:027]: Set ALDO4 Successfully.
+[I][i2c_custom:028]: Set ALDO3 Successfully.
+[I][i2c_custom:029]: Set BLDO1 Successfully.
+[I][i2c_custom:030]: Enable DC Successfully.
+[I][i2c_custom:031]: Set LDO ON Successfully.
+[I][i2c_custom:032]: Set TS Pin Detection Disabled Successfully.
+[I][i2c_custom:033]: Set Charger Constant Current Successfully.
+[I][i2c_custom:034]: Set Charge Target Voltage Successfully.
+[I][i2c_custom:035]: Set Charging LED Mode Successfully.
+[I][pmu_init:040]: Wrote 0x01 to 0x04
+[I][pmu_init:046]: PMU initialization complete → Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4202d1fd
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x15c8
+load:0x403c8700,len:0xce4
+load:0x403cb700,len:0x2f34
+entry 0x403c8918
+I (24) boot: ESP-IDF 5.5.2 2nd stage bootloader
+I (24) boot: compile time Feb 28 2026 02:26:49
+I (24) boot: Multicore bootloader
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v1.3
+I (25) boot.esp32s3: Boot SPI Speed : 80MHz
+I (25) boot.esp32s3: SPI Mode       : DIO
+I (25) boot.esp32s3: SPI Flash Size : 4MB
+I (25) boot: Enabling RNG early entropy source...
+I (26) boot: Partition Table:
+I (26) boot: ## Label            Usage          Type ST Offset   Length
+I (26) boot:  0 nvs              WiFi data        01 02 00009000 00005000
+I (27) boot:  1 otadata          OTA data         01 00 0000e000 00002000
+I (27) boot:  2 app0             OTA app          00 10 00010000 001c0000
+I (27) boot:  3 app1             OTA app          00 11 001d0000 001c0000
+I (28) boot:  4 eeprom           Unknown data     01 99 00390000 00001000
+I (28) boot:  5 spiffs           Unknown data     01 82 00391000 0000f000
+I (29) boot: End of partition table
+I (29) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=1e95ch (125276) map
+I (52) esp_image: segment 1: paddr=0002e984 vaddr=3fc96400 size=01694h (  5780) load
+I (53) esp_image: segment 2: paddr=00030020 vaddr=42000020 size=a088ch (657548) map
+I (170) esp_image: segment 3: paddr=000d08b4 vaddr=3fc97a94 size=05770h ( 22384) load
+I (175) esp_image: segment 4: paddr=000d602c vaddr=40374000 size=12320h ( 74528) load
+I (191) esp_image: segment 5: paddr=000e8354 vaddr=50000000 size=00020h (    32) load
+I (200) boot: Loaded app from partition at offset 0x10000
+I (200) boot: Disabling RNG early entropy source...
 [I][logger:118]: Log initialized
 [I][app:091]: Running through setup()
 [I][i2c.idf:206]: Performing bus recovery
 [I][i2c.idf:206]: Performing bus recovery
-[D][binary_sensor:044]: 'ttgocam2 PIR' >> OFF
+[D][binary_sensor:044]: 'ttgocam2 PIR' >> ON
 [C][component:278]: Setup esp32_camera took 206ms
 [C][component:278]: Setup display took 124ms
 [C][wifi:610]: Starting
 [D][wifi:1263]: Starting scan
-[C][component:278]: Setup wifi took 63ms
+[C][component:278]: Setup wifi took 55ms
 [I][app:138]: setup() finished successfully!
-[I][i2c_custom:018]: Set DC3 Successfully.
-[I][i2c_custom:019]: Set ALDO1 Successfully.
-[I][i2c_custom:020]: Set ALDO2 Successfully.
-[I][i2c_custom:021]: Set ALDO4 Successfully.
-[I][i2c_custom:022]: Set ALDO3 Successfully.
-[I][i2c_custom:023]: Set BLDO1 Successfully.
-[I][i2c_custom:024]: Enable DC Successfully.
-[I][i2c_custom:025]: Set LDO ON Successfully.
-[I][i2c_custom:026]: Set TS Pin Detection Disabled Successfully.
-[I][i2c_custom:027]: Set Charger Constant Current Successfully.
-[I][i2c_custom:028]: Set Charge Target Voltage Successfully.
-[I][i2c_custom:029]: Set Charging LED Mode Successfully.
+[I][pmu_check:020]: read 0x04 : 0x01
+[I][pmu_check:049]: Flag is already 0x01 → Power has been initialized, skipping PMU settings
 [W][component:431]: wifi set Warning flag: scanning for networks
-[I][app:215]: ESPHome version 2026.2.2 compiled on 2026-02-28 02:08:28 +0000
+[I][app:215]: ESPHome version 2026.2.2 compiled on 2026-03-02 02:03:27 +0000
 [I][app:222]: ESP32 Chip: ESP32-S3 rev0.2, 2 core(s)
 [C][logger:237]: Logger:
   Max Level: DEBUG
@@ -1526,7 +1571,7 @@ I (199) boot: Disabling RNG early entropy source...
   Frequency: 50000 Hz
 [C][i2c.idf:104]:   Recovery: bus successfully recovered
 [C][i2c.idf:114]: Results from bus scan:
-[C][i2c.idf:116]: Found no devices
+[C][i2c.idf:120]: Found device at address 0x30
 [C][gpio.binary_sensor:016]: GPIO Binary Sensor 'ttgocam2 PIR'
 [C][gpio.binary_sensor:163]:   Device Class: 'motion'
 [C][gpio.binary_sensor:152]:   Pin: GPIO17
@@ -1555,7 +1600,7 @@ I (199) boot: Disabling RNG early entropy source...
   Vertical Flip: OFF
   Horizontal Mirror: OFF
   Special Effect: 0
-  White Balance Mode: 0[0m
+  White Balance Mode: 0
 [C][esp32_camera:153]:   Auto Exposure Control: 1
   Auto Exposure Control 2: 0
   Auto Exposure Level: 0
@@ -1591,6 +1636,7 @@ I (199) boot: Disabling RNG early entropy source...
 [W][component:582]: Components should block for at most 30 ms
 [W][component:579]: logger took a long time for an operation (117 ms)
 [W][component:582]: Components should block for at most 30 ms
+[D][main:065]: Normal startup process - camera should be initialized soon
 [D][wifi:1382]: Found networks:
 [I][wifi:1353]: - 'LilyGo-AABB' (B8:3A:08:01:A1:92) ▂▄▆█ Ch: 6 -60dB P:0
 [D][wifi:1739]: Retry phase: INITIAL_CONNECT → SCAN_CONNECTING
@@ -1600,19 +1646,14 @@ I (199) boot: Disabling RNG early entropy source...
 [C][wifi:1213]:   SSID: 'LilyGo-AABB'
   BSSID: B8:3A:08:01:A1:92
   Hostname: 'lilygo-esp32s3-camera-20260202'
-  Signal strength: -62 dB ▂▄▆█
+  Signal strength: -63 dB ▂▄▆█
   Channel: 6
   Subnet: 255.255.255.0
   Gateway: 192.168.36.1
   DNS1: 192.168.36.1
   DNS2: 0.0.0.0
 [W][component:462]: wifi cleared Warning flag
-[D][binary_sensor:044]: 'ttgocam2 PIR' >> ON
 [D][binary_sensor:044]: 'ttgocam2 PIR' >> OFF
 [D][binary_sensor:044]: 'ttgocam2 PIR' >> ON
-[D][binary_sensor:044]: 'ttgocam2 PIR' >> OFF
-[D][esp32_camera:226]: Received 7 images in last 60s
-[D][esp32_camera:226]: Received 7 images in last 60s
-[D][esp32_camera:226]: Received 7 images in last 60s
-[D][esp32_camera:226]: Received 7 images in last 60s
+
 ```

@@ -79,7 +79,7 @@ Please enter the upload mode manually.
     1. Release the BOOT button
     1. Upload sketch
 12. How to use ESPHome?
-    - [t-camera-s3.yaml](https://github.com/Xinyuan-LilyGO/LilyGo-Camera-Series/blob/master/esphome/t-camera-s3.yaml) Contributed by @Joop ，For discussion and usage see [issue](https://github.com/esphome/issues/issues/4168)
+    - [esphome](https://github.com/Xinyuan-LilyGO/LilyGo-Cam-ESP32S3/tree/master/esphome)
 
 ## 4️⃣ Pins:
 
