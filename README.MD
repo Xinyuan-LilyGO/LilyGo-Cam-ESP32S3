@@ -103,3 +103,16 @@ Please enter the upload mode manually.
 | PMU Channel | Microphone | OLED/ESP32S3 | Camera            | Pir   |
 | ----------- | ---------- | ------------ | ----------------- | ----- |
 |             | BLDO1      | DCDC1        | ALDO1/ALDO2/ALDO4 | ALDO3 |
+
+## Free IO
+
+| GPIO | Valid                                |
+| ---- | ------------------------------------ |
+| 35   | ❌ Unavailable, internal PSRAM in use |
+| 36   | ❌ Unavailable, internal PSRAM in use |
+| 37   | ❌ Unavailable, internal PSRAM in use |
+| 15   | ✅                                    |
+| 16   | ✅                                    |
+| 45   | ✅                                    |
+| 3    | ✅                                    |
+| 46   | ✅                                    |
