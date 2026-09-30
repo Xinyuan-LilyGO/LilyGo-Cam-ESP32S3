@@ -8,12 +8,6 @@
  */
 #pragma once
 
-// ===================
-// Select camera model
-// ===================
-#define LILYGO_ESP32S3_CAM_PIR_VOICE // Has PSRAM
-
-
 // Set this to true if using AP mode
 #define USING_AP_MODE       true
 
@@ -21,14 +15,6 @@
 // ===================
 // Pins
 // ===================
-#ifdef I2C_SDA
-#undef I2C_SDA
-#endif
-
-#ifdef I2C_SCL
-#undef I2C_SCL
-#endif
-
 #define PWDN_GPIO_NUM               (-1)
 #define RESET_GPIO_NUM              (39)
 #define XCLK_GPIO_NUM               (38)
@@ -46,8 +32,8 @@
 #define Y3_GPIO_NUM                 (47)
 #define Y2_GPIO_NUM                 (14)
 
-#define I2C_SDA                     (7)
-#define I2C_SCL                     (6)
+#define BOARD_I2C_SDA               (7)
+#define BOARD_I2C_SCL               (6)
 
 #define PIR_INPUT_PIN               (17)
 #define PMU_INPUT_PIN               (2)

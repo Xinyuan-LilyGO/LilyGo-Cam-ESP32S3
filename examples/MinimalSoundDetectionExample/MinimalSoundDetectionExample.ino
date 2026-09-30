@@ -1,109 +1,103 @@
 /**
- * @file      main.cpp
- * @author    Lewis He (lewishe@outlook.com)
+ * @file      MinimalSoundDetectionExample.ino
  * @license   MIT
- * @copyright Copyright (c) 2022  Shenzhen Xin Yuan Electronic Technology Co., Ltd
- * @date      2022-09-16
- *
+ * @brief     I2S/PDM microphone level and sound trigger example.
  */
 #include <Arduino.h>
+#include <ESP_I2S.h>
 #include <Wire.h>
+#include <math.h>
 
 #define XPOWERS_CHIP_AXP2101
 #include "XPowersLib.h"
 #include "utilities.h"
-#include "driver/i2s.h"
-#include "esp_vad.h"
 
+constexpr uint32_t SAMPLE_RATE = 16000;
+constexpr size_t FRAME_SAMPLES = 480;
+constexpr uint32_t SOUND_THRESHOLD = 1200;
 
-XPowersPMU  PMU;
+XPowersPMU PMU;
+I2SClass microphone(I2S_NUM_0);
 
+#if LILYGO_MIC_TYPE == LILYGO_MIC_I2S
+using SampleType = int32_t;
+SampleType samples[FRAME_SAMPLES * 2];
+#else
+using SampleType = int16_t;
+SampleType samples[FRAME_SAMPLES];
+#endif
 
+struct AudioLevel {
+    uint32_t rms;
+    uint32_t peak;
+};
 
-#define VAD_SAMPLE_RATE_HZ              16000
-#define VAD_FRAME_LENGTH_MS             30
-#define VAD_BUFFER_LENGTH               (VAD_FRAME_LENGTH_MS * VAD_SAMPLE_RATE_HZ / 1000)
-#define I2S_CH                          I2S_NUM_0
+AudioLevel calculateLevel(const SampleType *data, size_t count,
+                          size_t stride, uint8_t rightShift)
+{
+    int64_t sum = 0;
+    for (size_t i = 0; i < count; ++i) {
+        sum += data[i * stride] >> rightShift;
+    }
+    const int32_t mean = sum / static_cast<int32_t>(count);
 
-size_t bytes_read;
-uint8_t status;
-int16_t *vad_buff;
-vad_handle_t vad_inst;
+    uint64_t squareSum = 0;
+    uint32_t peak = 0;
+    for (size_t i = 0; i < count; ++i) {
+        const int32_t centered = (data[i * stride] >> rightShift) - mean;
+        const uint32_t magnitude = centered < 0 ? -centered : centered;
+        peak = max(peak, magnitude);
+        squareSum += static_cast<int64_t>(centered) * centered;
+    }
 
+    return {
+        static_cast<uint32_t>(sqrtf(
+            static_cast<float>(squareSum) / static_cast<float>(count))),
+        peak
+    };
+}
 
 void setup()
 {
-
     Serial.begin(115200);
+    delay(1000);
 
-    //Start while waiting for Serial monitoring
-    while (!Serial);
-
-    delay(3000);
-
-    Serial.println();
-
-    /*********************************
-     *  step 1 : Initialize power chip,
-    ***********************************/
-    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, I2C_SDA, I2C_SCL)) {
-        Serial.println("Failed to initialize power.....");
-        while (1) {
-            delay(5000);
+    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS,
+                   BOARD_I2C_SDA, BOARD_I2C_SCL)) {
+        Serial.println("Failed to initialize power");
+        while (true) {
+            delay(1000);
         }
     }
 
-    //Set the working voltage of the microphone, please do not modify the parameters
-    PMU.setBLDO1Voltage(3300);   // MIC VDD 3300
+    PMU.setBLDO1Voltage(3300);
     PMU.enableBLDO1();
-
-    // TS Pin detection must be disable, otherwise it cannot be charged
     PMU.disableTSPinMeasure();
-
-    // Turn off the PMU charging indicator and we use the voice wake-up LED
     PMU.setChargingLedMode(XPOWERS_CHG_LED_OFF);
 
-
-    /*********************************
-     *  step 3 : Initialize i2s device
-    ***********************************/
-    i2s_config_t i2s_config = {
-        .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX),
-        .sample_rate = 16000,
-        .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
-        .channel_format = I2S_CHANNEL_FMT_ONLY_LEFT,
-        .communication_format = I2S_COMM_FORMAT_STAND_I2S,
-        .intr_alloc_flags = ESP_INTR_FLAG_LEVEL2,
-        .dma_buf_count = 3,
-        .dma_buf_len = 300,
-    };
-
-    i2s_pin_config_t pin_config = {
-        .mck_io_num = I2S_PIN_NO_CHANGE,
-        .bck_io_num = IIS_SCLK_PIN,
-        .ws_io_num  = IIS_WS_PIN,
-        .data_out_num = I2S_PIN_NO_CHANGE,
-        .data_in_num = IIS_DIN_PIN
-    };
-
-    i2s_driver_install(I2S_CH, &i2s_config, 0, NULL);
-    i2s_set_pin(I2S_CH, &pin_config);
-    i2s_zero_dma_buffer(I2S_CH);
-
-    /*********************************
-     *  step 4 : Initialize multinet
-    ***********************************/
-#if ESP_IDF_VERSION_VAL(4,4,1) == ESP_IDF_VERSION
-    vad_inst = vad_create(VAD_MODE_0, VAD_SAMPLE_RATE_HZ, VAD_FRAME_LENGTH_MS);
-#elif ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(4,4,1)
-    vad_inst = vad_create(VAD_MODE_0);
+    microphone.setTimeout(1000);
+#if LILYGO_MIC_TYPE == LILYGO_MIC_PDM
+    pinMode(MIC_PDM_LR_PIN, OUTPUT);
+    digitalWrite(MIC_PDM_LR_PIN, MIC_PDM_LR_LEVEL);
+    microphone.setPinsPdmRx(MIC_CLK_PIN, MIC_DATA_PIN);
+    const bool ready = microphone.begin(
+        I2S_MODE_PDM_RX, SAMPLE_RATE, I2S_DATA_BIT_WIDTH_16BIT,
+        I2S_SLOT_MODE_MONO, I2S_STD_SLOT_RIGHT);
+    Serial.printf("PDM microphone: DATA=%d, CLK=%d, L/R=%d\n",
+                  MIC_DATA_PIN, MIC_CLK_PIN, MIC_PDM_LR_PIN);
 #else
-#error "No support this version."
+    microphone.setPins(MIC_CLK_PIN, MIC_I2S_WS_PIN, -1, MIC_DATA_PIN);
+    const bool ready = microphone.begin(
+        I2S_MODE_STD, SAMPLE_RATE, I2S_DATA_BIT_WIDTH_32BIT,
+        I2S_SLOT_MODE_STEREO, I2S_STD_SLOT_BOTH);
+    Serial.printf("I2S microphone: DATA=%d, BCLK=%d, WS=%d\n",
+                  MIC_DATA_PIN, MIC_CLK_PIN, MIC_I2S_WS_PIN);
 #endif
-    vad_buff = (int16_t *)malloc(VAD_BUFFER_LENGTH * sizeof(short));
-    if (vad_buff == NULL) {
-        Serial.println("Memory allocation failed!");
-        while (1) {
+
+    if (!ready) {
+        Serial.printf("Microphone initialization failed: %d\n",
+                      microphone.lastError());
+        while (true) {
             delay(1000);
         }
     }
@@ -111,18 +105,42 @@ void setup()
 
 void loop()
 {
-    i2s_read(I2S_CH, (char *)vad_buff, VAD_BUFFER_LENGTH * sizeof(short), &bytes_read, portMAX_DELAY);
-    // Feed samples to the VAD process and get the result
-#if ESP_IDF_VERSION_VAL(4,4,1) == ESP_IDF_VERSION
-    vad_state_t vad_state = vad_process(vad_inst, vad_buff);
-#elif ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(4,4,1)
-    vad_state_t vad_state = vad_process(vad_inst, vad_buff, VAD_SAMPLE_RATE_HZ, VAD_FRAME_LENGTH_MS);
+    const size_t bytesRead = microphone.readBytes(
+        reinterpret_cast<char *>(samples), sizeof(samples));
+    if (bytesRead == 0) {
+        Serial.printf("Microphone read failed: %d\n", microphone.lastError());
+        delay(100);
+        return;
+    }
+
+#if LILYGO_MIC_TYPE == LILYGO_MIC_I2S
+    const size_t frameCount = bytesRead / (2 * sizeof(samples[0]));
+    const AudioLevel left = calculateLevel(samples, frameCount, 2, 14);
+    const AudioLevel right = calculateLevel(samples + 1, frameCount, 2, 14);
+    const bool useRight = right.rms > left.rms;
+    const AudioLevel level = useRight ? right : left;
 #else
-#error "No support this version."
+    const size_t sampleCount = bytesRead / sizeof(samples[0]);
+    const AudioLevel level = calculateLevel(samples, sampleCount, 1, 0);
 #endif
-    if (vad_state == VAD_SPEECH) {
-        Serial.print(millis());
-        Serial.println(":Speech detected");
+
+    static uint32_t lastPrintMs = 0;
+    static uint8_t loudFrames = 0;
+    const uint32_t now = millis();
+    if (now - lastPrintMs >= 250) {
+        lastPrintMs = now;
+        Serial.printf("Microphone RMS: %lu, peak: %lu\n",
+                      static_cast<unsigned long>(level.rms),
+                      static_cast<unsigned long>(level.peak));
+    }
+
+    if (level.rms >= SOUND_THRESHOLD) {
+        loudFrames = min<uint8_t>(loudFrames + 1, 3);
+    } else {
+        loudFrames = 0;
+    }
+    if (loudFrames == 3) {
+        Serial.println("Sound detected");
+        loudFrames = 0;
     }
 }
-

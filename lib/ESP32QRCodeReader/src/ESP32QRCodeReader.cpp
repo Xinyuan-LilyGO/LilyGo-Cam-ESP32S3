@@ -46,8 +46,8 @@ QRCodeReaderSetupErr ESP32QRCodeReader::setup()
   cameraConfig.pin_pclk = pins.PCLK_GPIO_NUM;
   cameraConfig.pin_vsync = pins.VSYNC_GPIO_NUM;
   cameraConfig.pin_href = pins.HREF_GPIO_NUM;
-  cameraConfig.pin_sscb_sda = pins.SIOD_GPIO_NUM;
-  cameraConfig.pin_sscb_scl = pins.SIOC_GPIO_NUM;
+  cameraConfig.pin_sccb_sda = pins.SIOD_GPIO_NUM;
+  cameraConfig.pin_sccb_scl = pins.SIOC_GPIO_NUM;
   cameraConfig.pin_pwdn = pins.PWDN_GPIO_NUM;
   cameraConfig.pin_reset = pins.RESET_GPIO_NUM;
   cameraConfig.xclk_freq_hz = 10000000;

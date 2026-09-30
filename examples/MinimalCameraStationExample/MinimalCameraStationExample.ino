@@ -10,10 +10,16 @@
 #include <WiFi.h>
 #include <WiFiMulti.h>
 #include "esp_camera.h"
-#include <secrets.h>
-
-#if (ESP_ARDUINO_VERSION)  > ESP_ARDUINO_VERSION_VAL(3,0,0)
-#error "Please use ESP32 core version lower than V 3.0.0, 2.0.17 is recommended"
+#if __has_include("secrets.h")
+#include "secrets.h"
+#endif
+#ifndef WIFI_SSID1
+#define WIFI_SSID1 ""
+#define WIFI_SSID_PASSWORD1 ""
+#define WIFI_SSID2 ""
+#define WIFI_SSID_PASSWORD2 ""
+#define WIFI_SSID3 ""
+#define WIFI_SSID_PASSWORD3 ""
 #endif
 
 #define XPOWERS_CHIP_AXP2101
@@ -43,7 +49,7 @@ void setup()
      *  step 1 : Initialize power chip,
      *  turn on camera power channel
     ***********************************/
-    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, I2C_SDA, I2C_SCL)) {
+    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, BOARD_I2C_SDA, BOARD_I2C_SCL)) {
         Serial.println("Failed to initialize power.....");
         while (1) {
             delay(5000);
@@ -65,9 +71,15 @@ void setup()
      * step 2 : start network
     ***********************************/
 
+    if (WIFI_SSID1[0] == '\0') {
+        Serial.println("WiFi credentials are missing. Copy secrets.h.example to secrets.h and edit it.");
+        while (true) {
+            delay(1000);
+        }
+    }
     wifiMulti.addAP(WIFI_SSID1, WIFI_SSID_PASSWORD1);
-    wifiMulti.addAP(WIFI_SSID2, WIFI_SSID_PASSWORD1);
-    wifiMulti.addAP(WIFI_SSID3, WIFI_SSID_PASSWORD1);
+    wifiMulti.addAP(WIFI_SSID2, WIFI_SSID_PASSWORD2);
+    wifiMulti.addAP(WIFI_SSID3, WIFI_SSID_PASSWORD3);
         
     Serial.println("Connecting Wifi...");
     while (WiFi.status() != WL_CONNECTED) {
@@ -98,8 +110,8 @@ void setup()
     config.pin_pclk = PCLK_GPIO_NUM;
     config.pin_vsync = VSYNC_GPIO_NUM;
     config.pin_href = HREF_GPIO_NUM;
-    config.pin_sscb_sda = SIOD_GPIO_NUM;
-    config.pin_sscb_scl = SIOC_GPIO_NUM;
+    config.pin_sccb_sda = SIOD_GPIO_NUM;
+    config.pin_sccb_scl = SIOC_GPIO_NUM;
     config.pin_pwdn = PWDN_GPIO_NUM;
     config.pin_reset = RESET_GPIO_NUM;
     config.xclk_freq_hz = 20000000;

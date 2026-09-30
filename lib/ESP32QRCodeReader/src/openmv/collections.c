@@ -4,6 +4,10 @@
  */
 
 #include "collections.h"
+#include <stdlib.h>
+#include <string.h>
+
+void *ps_malloc(size_t size);
 #define CHAR_BITS (sizeof(char) * 8)
 #define CHAR_MASK (CHAR_BITS - 1)
 #define CHAR_SHIFT IM_LOG2(CHAR_MASK)

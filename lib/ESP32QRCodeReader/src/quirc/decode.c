@@ -19,6 +19,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+void *ps_malloc(size_t size);
+
 #define MAX_POLY 64
 
 /************************************************************************

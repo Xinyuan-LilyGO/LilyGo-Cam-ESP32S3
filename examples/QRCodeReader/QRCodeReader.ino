@@ -13,22 +13,22 @@
 #include "XPowersLib.h"
 
 CameraPins config = {
-    .PWDN_GPIO_NUM =  _PWDN_GPIO_NUM,
-    .RESET_GPIO_NUM = _RESET_GPIO_NUM,
-    .XCLK_GPIO_NUM = _XCLK_GPIO_NUM,
-    .SIOD_GPIO_NUM = _SIOD_GPIO_NUM,
-    .SIOC_GPIO_NUM = _SIOC_GPIO_NUM,
-    .Y9_GPIO_NUM = _Y9_GPIO_NUM,
-    .Y8_GPIO_NUM = _Y8_GPIO_NUM,
-    .Y7_GPIO_NUM = _Y7_GPIO_NUM,
-    .Y6_GPIO_NUM = _Y6_GPIO_NUM,
-    .Y5_GPIO_NUM = _Y5_GPIO_NUM,
-    .Y4_GPIO_NUM = _Y4_GPIO_NUM,
-    .Y3_GPIO_NUM = _Y3_GPIO_NUM,
-    .Y2_GPIO_NUM = _Y2_GPIO_NUM,
-    .VSYNC_GPIO_NUM = _VSYNC_GPIO_NUM,
-    .HREF_GPIO_NUM =  _HREF_GPIO_NUM,
-    .PCLK_GPIO_NUM =  _PCLK_GPIO_NUM,
+    .PWDN_GPIO_NUM = CAMERA_PWDN_GPIO_NUM,
+    .RESET_GPIO_NUM = CAMERA_RESET_GPIO_NUM,
+    .XCLK_GPIO_NUM = CAMERA_XCLK_GPIO_NUM,
+    .SIOD_GPIO_NUM = CAMERA_SIOD_GPIO_NUM,
+    .SIOC_GPIO_NUM = CAMERA_SIOC_GPIO_NUM,
+    .Y9_GPIO_NUM = CAMERA_Y9_GPIO_NUM,
+    .Y8_GPIO_NUM = CAMERA_Y8_GPIO_NUM,
+    .Y7_GPIO_NUM = CAMERA_Y7_GPIO_NUM,
+    .Y6_GPIO_NUM = CAMERA_Y6_GPIO_NUM,
+    .Y5_GPIO_NUM = CAMERA_Y5_GPIO_NUM,
+    .Y4_GPIO_NUM = CAMERA_Y4_GPIO_NUM,
+    .Y3_GPIO_NUM = CAMERA_Y3_GPIO_NUM,
+    .Y2_GPIO_NUM = CAMERA_Y2_GPIO_NUM,
+    .VSYNC_GPIO_NUM = CAMERA_VSYNC_GPIO_NUM,
+    .HREF_GPIO_NUM = CAMERA_HREF_GPIO_NUM,
+    .PCLK_GPIO_NUM = CAMERA_PCLK_GPIO_NUM,
 };
 
 ESP32QRCodeReader reader(config);
@@ -68,7 +68,7 @@ void setup()
      *  step 1 : Initialize power chip,
      *  turn on camera power channel
     ***********************************/
-    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, I2C_SDA, I2C_SCL)) {
+    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, BOARD_I2C_SDA, BOARD_I2C_SCL)) {
         Serial.println("Failed to initialize power.....");
         while (1) {
             delay(5000);

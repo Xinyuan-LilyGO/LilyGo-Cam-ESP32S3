@@ -1,5 +1,5 @@
 /**
- * @file      main.cpp
+ * @file      MinimalCameraExample.ino
  * @author    Lewis He (lewishe@outlook.com)
  * @license   MIT
  * @copyright Copyright (c) 2022  Shenzhen Xin Yuan Electronic Technology Co., Ltd
@@ -10,10 +10,18 @@
 #include <WiFi.h>
 #include <WiFiMulti.h>
 #include "esp_camera.h"
-#include <secrets.h>
+#include <esp_mac.h>
 
-#if (ESP_ARDUINO_VERSION)  > ESP_ARDUINO_VERSION_VAL(3,0,0)
-#error "Please use ESP32 core version lower than V 3.0.0, 2.0.17 is recommended"
+#if __has_include("secrets.h")
+#include "secrets.h"
+#endif
+#ifndef WIFI_SSID1
+#define WIFI_SSID1 ""
+#define WIFI_SSID_PASSWORD1 ""
+#define WIFI_SSID2 ""
+#define WIFI_SSID_PASSWORD2 ""
+#define WIFI_SSID3 ""
+#define WIFI_SSID_PASSWORD3 ""
 #endif
 
 #define XPOWERS_CHIP_AXP2101
@@ -27,7 +35,7 @@ XPowersPMU  PMU;
 WiFiMulti   wifiMulti;
 String      hostName = "LilyGo-Cam-";
 String      ipAddress = "";
-bool        use_ap_mode = true;
+bool        use_ap_mode = USING_AP_MODE;
 
 
 
@@ -47,7 +55,7 @@ void setup()
      *  step 1 : Initialize power chip,
      *  turn on camera power channel
     ***********************************/
-    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, I2C_SDA, I2C_SCL)) {
+    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, BOARD_I2C_SDA, BOARD_I2C_SCL)) {
         Serial.println("Failed to initialize power.....");
         while (1) {
             delay(5000);
@@ -72,8 +80,12 @@ void setup()
     ***********************************/
     if (use_ap_mode) {
 
+        uint8_t apMac[6];
+        esp_read_mac(apMac, ESP_MAC_WIFI_SOFTAP);
+        char macSuffix[5];
+        snprintf(macSuffix, sizeof(macSuffix), "%02X%02X", apMac[4], apMac[5]);
+        hostName += macSuffix;
         WiFi.mode(WIFI_AP);
-        hostName += WiFi.macAddress().substring(0, 5);
         WiFi.softAP(hostName.c_str());
         ipAddress = WiFi.softAPIP().toString();
         Serial.print("Started AP mode host name :");
@@ -82,10 +94,13 @@ void setup()
         Serial.println(WiFi.softAPIP().toString());
 
     } else {
-
+        if (WIFI_SSID1[0] == '\0') {
+            Serial.println("Station mode requires a secrets.h file. See secrets.h.example.");
+            return;
+        }
         wifiMulti.addAP(WIFI_SSID1, WIFI_SSID_PASSWORD1);
-        wifiMulti.addAP(WIFI_SSID2, WIFI_SSID_PASSWORD1);
-        wifiMulti.addAP(WIFI_SSID3, WIFI_SSID_PASSWORD1);
+        wifiMulti.addAP(WIFI_SSID2, WIFI_SSID_PASSWORD2);
+        wifiMulti.addAP(WIFI_SSID3, WIFI_SSID_PASSWORD3);
         
         Serial.println("Connecting Wifi...");
         if (wifiMulti.run() == WL_CONNECTED) {
@@ -116,8 +131,8 @@ void setup()
     config.pin_pclk = PCLK_GPIO_NUM;
     config.pin_vsync = VSYNC_GPIO_NUM;
     config.pin_href = HREF_GPIO_NUM;
-    config.pin_sscb_sda = SIOD_GPIO_NUM;
-    config.pin_sscb_scl = SIOC_GPIO_NUM;
+    config.pin_sccb_sda = SIOD_GPIO_NUM;
+    config.pin_sccb_scl = SIOC_GPIO_NUM;
     config.pin_pwdn = PWDN_GPIO_NUM;
     config.pin_reset = RESET_GPIO_NUM;
     config.xclk_freq_hz = 20000000;

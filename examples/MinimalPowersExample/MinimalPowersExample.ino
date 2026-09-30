@@ -38,7 +38,7 @@ void setup()
      *  step 1 : Initialize power chip,
      *  turn on modem and gps antenna power channel
     ***********************************/
-    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, I2C_SDA, I2C_SCL)) {
+    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, BOARD_I2C_SDA, BOARD_I2C_SCL)) {
         Serial.println("Failed to initialize power.....");
         while (1) {
             delay(5000);
@@ -234,4 +234,3 @@ void loop()
         loopMillis = millis();
     }
 }
-
