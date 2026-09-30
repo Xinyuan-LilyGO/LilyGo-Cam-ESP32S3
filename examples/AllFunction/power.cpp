@@ -20,7 +20,7 @@ XPowersPMU PMU;
 
 const uint64_t deep_sleep_time_ms = TIME_TO_SLEEP * uS_TO_S_FACTOR;
 
-void setSleep(LilyGoWakeupSoucer source)
+void setSleep(LilyGoWakeupSource source)
 {
     Serial.println("Going to sleep now");
 
@@ -55,7 +55,7 @@ void setSleep(LilyGoWakeupSoucer source)
     switch (source) {
     case LILYGO_WAKEUP_SOURCE_PIR:
         while (digitalRead(PIR_INPUT_PIN)) {
-            Serial.println("Wait for pir invaild"); delay(1000);
+            Serial.println("Wait for pir invalid"); delay(1000);
         }
         //Go to sleep after 5 seconds
         delay(5000);

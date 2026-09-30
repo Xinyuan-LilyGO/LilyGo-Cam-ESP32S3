@@ -10,7 +10,7 @@
 #pragma once
 
 
-enum LilyGoWakeupSoucer {
+enum LilyGoWakeupSource {
     LILYGO_WAKEUP_SOURCE_PIR,
     LILYGO_WAKEUP_SOURCE_BUTTON,
     LILYGO_WAKEUP_SOURCE_PMU_PEKEY,
@@ -19,7 +19,7 @@ enum LilyGoWakeupSoucer {
 
 bool setupPower();
 void loopPower();
-void setSleep(LilyGoWakeupSoucer source);
+void setSleep(LilyGoWakeupSource source);
 
 
 

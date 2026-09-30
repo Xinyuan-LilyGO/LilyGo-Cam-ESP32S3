@@ -15,8 +15,8 @@
 
 using namespace ace_button;
 
-AceButton       btns[BUTTON_CONUT];
-const uint8_t   buttons[BUTTON_CONUT] = BUTTON_ARRAY;
+AceButton       btns[BUTTON_COUNT];
+const uint8_t   buttons[BUTTON_COUNT] = BUTTON_ARRAY;
 uint8_t         funcSelectIndex = 0;
 uint8_t         funcMaxIndex = 0;
 
@@ -28,7 +28,7 @@ uint8_t getButtonCounter();
 
 void setupButton()
 {
-    for (int i = 0; i < BUTTON_CONUT; ++i) {
+    for (int i = 0; i < BUTTON_COUNT; ++i) {
         pinMode(buttons[i], INPUT_PULLUP);
         btns[i].init(buttons[i], HIGH, i);
         ButtonConfig *buttonConfig = btns[i].getButtonConfig();
@@ -42,7 +42,7 @@ void setupButton()
 
 void loopButton()
 {
-    for (int i = 0; i < BUTTON_CONUT; ++i) {
+    for (int i = 0; i < BUTTON_COUNT; ++i) {
         btns[i].check();
     }
 }
