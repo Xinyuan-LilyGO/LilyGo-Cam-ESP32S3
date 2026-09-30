@@ -4,15 +4,16 @@
 
 ## 1️⃣ Examples preview
 
-````
-examples examples
-├─AllFunction                       # Full function test
+```text
+examples
+├─factory                           # Full factory test (v1.6 I2S / v1.7 PDM)
 ├─MinimalCameraExample              # Minimal camera example
+├─MinimalCameraStationExample       # Minimal camera example in station mode
 ├─MinimalPowersExample              # Minimal PMU operation example
 ├─MinimalScreenExample              # Minimal screen example
 ├─MinimalSoundDetectionExample      # Minimal ambient sound detection example
-└─MinimalVoiceWakeupExample         # Minimal voice wakeup example
-````
+└─QRCodeReader                      # QR code reader example
+```
 
 ## 2️⃣ Quick Start
 
@@ -22,21 +23,16 @@ examples examples
 2. Search for the `PlatformIO` plugin in the `VisualStudioCode` extension and install it.
 3. After the installation is complete, you need to restart `VisualStudioCode`
 4. After restarting `VisualStudioCode`, select `File` in the upper left corner of `VisualStudioCode` -> `Open Folder` -> select the `LilyGo-Cam-ESP32S3` directory
-5. Click on the `platformio.ini` file, and in the `platformio` column, cancel the sample line that needs to be used, please make sure that only one line is valid
-6. Click the (✔) symbol in the lower left corner to compile
+5. Select the `v1_6` environment for the v1.6 I2S microphone board, or `v1_7` for the v1.7 PDM microphone board. To build a minimal example, change `src_dir` in `platformio.ini`.
+6. Click the (✔) symbol in the lower left corner to compile the selected environment
 7. Connect the board to the computer USB
 8. Click (→) to upload firmware
 9. Click (plug symbol) to monitor serial output
-10. To use the `AllFunction` and `MinimalSoundDetectionExample` examples, additional model files need to be uploaded, follow the steps below
-    - Click `PlatformIO` (the little bee icon) on the left side of `VisualStudioCode`
-    - select `t-cameras3`
-    - Select `Platform`
-    - After making sure the board is connected to USB, click `Upload Filesystem image`
 
 #### ArduinoIDE
 
 1. Install [Arduino IDE](https://www.arduino.cc/en/software)
-2. Install [Arduino ESP32](https://docs.espressif.com/projects/arduino-esp32/en/latest/), **ESP32 core version should be lower than V 3.0.0, 2.0.17 is recommended**
+2. Install [Arduino ESP32](https://docs.espressif.com/projects/arduino-esp32/en/latest/) version `3.3.11`.
 3. Copy all the folders in the `LilyGo-Cam-ESP32S3/lib` directory to `<C:\Users\%USERNAME%\Documents\Arduino\libraries>`. If there is no `libraries` directory, please create a new one. Please note that you are not copying the `lib` directory, but copying the folders in the lib directory
 4. Open ArduinoIDE -> Tools
    - Board -> ESP32S3 Dev Module
@@ -51,16 +47,15 @@ examples examples
    - USB Mode -> Hardware CDC and JIAG
    - Upload Mode -> UART0/Hardware CDC
    - Upload Speed -> 921600
-5. Insert USB into the PC and click Upload <If the upload fails, View the Tips below>
+5. For `factory` or `MinimalSoundDetectionExample`, select the hardware revision in that sketch's `utilities.h`. The default is v1.6/I2S; use `LILYGO_BOARD_V1_7` for v1.7/PDM.
+6. Insert USB into the PC and click Upload <If the upload fails, View the Tips below>
 
 
 
 
 ## 3️⃣ Tips:
 
-1. Can I use the `Arduino IDE`?
-    - `AllFunction` and `MinimalSoundDetectionExample` examples are not acceptable, because model files and custom partition tables need to be uploaded. Currently, `Arduino IDE` does not support custom partition tables and upload model files (the time to write README is 20220930)
-    - The rest of the examples are available using the `Arduino IDE`
+1. All current examples can be opened directly with Arduino IDE. The sketch file name matches its containing directory, and no speech-model filesystem upload is required.
 2. The board integrates PMU (Power management chip), which has short circuit and overload protection. By default, `PWRKEY` needs to be pressed for 6 seconds to turn off the power supply of the board. Press `PWRKEY` for 128 milliseconds to turn on the power supply. If you need to modify the shutdown pressing time, please refer to ` MinimalPowersExample`
 3. The `PMU` `TS Pin` detection function needs to be turned off if the charging function is required. There is no NTC sensor on the board by default, so you need to disable the `TS Pin` detection function to use the charging function normally. If the `TS Pin` detection function is not turned off, insert the battery After the PMU charging indicator will flash, charging will be disabled at this time
 4. The external `5 Pin` expansion socket of the board, 5V is shared with `PMU` `SYS`, please do not connect an external power supply load greater than 600mA, `3.3V` use `PMU` `DCDC3` power supply, the voltage can be adjusted, The maximum output current should not exceed `1A` , 5V is the silkscreen name of the board. The actual output is equal to the input voltage. The VSYS output is equal to the input voltage.
@@ -95,8 +90,8 @@ Please enter the upload mode manually.
 | OLED/PMU/PIR   | SDA    | SCL      | PMU IRQ | PIR |
 | -------------- | ------ | -------- | ------- | --- |
 |                | 7      | 6        | 2       | 17  |
-| **Microphone** | **WS** | **DATA** | **CLK** |     |
-|                | 42     | 41       | 40      |     |
+| **Microphone** | **I2S WS / PDM L/R** | **DATA** | **CLK** |     |
+|                | 42                   | 41       | 40      |     |
 
 ## Power Channel:
 
