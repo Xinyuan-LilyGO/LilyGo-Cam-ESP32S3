@@ -8,7 +8,13 @@
  */
 #include <WiFi.h>
 #include <WiFiMulti.h>
-#include <secrets.h>
+#include <esp_mac.h>
+#if __has_include("secrets.h")
+#include "secrets.h"
+#else
+#define WIFI_SSID1 ""
+#define WIFI_SSID_PASSWORD1 ""
+#endif
 
 WiFiMulti wifiMulti;
 
@@ -94,17 +100,40 @@ void setupNetwork(bool setup_AP_Mode)
     WiFi.onEvent(WiFiEvent);
 
     if (setup_AP_Mode) {
+        uint8_t apMac[6];
+        const esp_err_t macResult = esp_read_mac(apMac, ESP_MAC_WIFI_SOFTAP);
+        if (macResult != ESP_OK) {
+            Serial.printf("Failed to read WiFi AP MAC address: %s\n",
+                          esp_err_to_name(macResult));
+            return;
+        }
 
-        WiFi.mode(WIFI_AP);
-        hostName += WiFi.macAddress().substring(12);
-        WiFi.softAP(hostName.c_str());
+        char macSuffix[5];
+        snprintf(macSuffix, sizeof(macSuffix), "%02X%02X", apMac[4], apMac[5]);
+        hostName = String("LilyGo-Cam-") + macSuffix;
+
+        if (!WiFi.mode(WIFI_AP)) {
+            Serial.println("Failed to enable WiFi AP mode");
+            return;
+        }
+
+        if (!WiFi.softAP(hostName.c_str())) {
+            Serial.println("Failed to start WiFi access point");
+            return;
+        }
+
         ipAddress = WiFi.softAPIP().toString();
-        Serial.print("Started AP mode host name :");
-        Serial.println(hostName);
-        Serial.print("IP address is :");
-        Serial.println(WiFi.softAPIP().toString());
+        Serial.printf("Started AP mode host name: %s\n", hostName.c_str());
+        Serial.printf("AP MAC address: %02X:%02X:%02X:%02X:%02X:%02X\n",
+                      apMac[0], apMac[1], apMac[2],
+                      apMac[3], apMac[4], apMac[5]);
+        Serial.printf("IP address: %s\n", ipAddress.c_str());
 
     } else {
+        if (WIFI_SSID1[0] == '\0') {
+            Serial.println("Station mode requires examples/factory/secrets.h");
+            return;
+        }
         wifiMulti.addAP(WIFI_SSID1, WIFI_SSID_PASSWORD1);
         //wifiMulti.addAP(WIFI_SSID2, WIFI_SSID_PASSWORD1);
         //wifiMulti.addAP(WIFI_SSID3, WIFI_SSID_PASSWORD1);

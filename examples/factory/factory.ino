@@ -1,5 +1,5 @@
 /**
- * @file      main.cpp
+ * @file      factory.ino
  * @author    Lewis He (lewishe@outlook.com)
  * @license   MIT
  * @copyright Copyright (c) 2022  Shenzhen Xin Yuan Electronic Technology Co., Ltd
@@ -13,37 +13,22 @@
 #include "power.h"
 #include "network.h"
 #include "server.h"
+#include "microphone.h"
 #include "utilities.h"
 #include "esp_camera.h"
 
-#if (ESP_ARDUINO_VERSION)  > ESP_ARDUINO_VERSION_VAL(3,0,0)
-#error "Please use ESP32 core version lower than V 3.0.0, 2.0.17 is recommended"
-#endif
-
 void startCameraServer();
-void setupVoiceWakeup();
 
-#ifdef  PLATFORMIO_ENV
-void setupSpeechRecognition();
-#else
-#warning "Voice wake-up does not support ArduinoIDE, only supports platformio , see README"
-#endif
-
-QueueHandle_t recVoice = NULL;
+QueueHandle_t peripheralEvents = NULL;
 void getWakeupReason();
 
 static LilyGoTrigger status = LILYGO_TRIGGER_FROM_NONE;
 
-void clearPheralsEvent()
-{
-    status = LILYGO_TRIGGER_FROM_NONE;
-}
-
 void pir_interrupt_event()
 {
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-    static uint8_t status = LILYGO_TRIGGER_FROM_PIR;
-    xQueueSendFromISR(recVoice, &status, &xHigherPriorityTaskWoken);
+    static LilyGoTrigger event = LILYGO_TRIGGER_FROM_PIR;
+    xQueueSendFromISR(peripheralEvents, &event, &xHigherPriorityTaskWoken);
     if ( xHigherPriorityTaskWoken ) {
         portYIELD_FROM_ISR ();
     }
@@ -57,16 +42,12 @@ void loopPeripherals(void *ptr)
     //if you only want to trigger when a human body is sensed, change this to RISING
     attachInterrupt(PIR_INPUT_PIN, pir_interrupt_event, CHANGE);
 
-    // Initialize the external extension pin,
-    // and if "Hi, ESP" is triggered, the two pins will be reversed
+    // Initialize the external extension pins.
     pinMode(EXTERN_PIN1, OUTPUT);
     pinMode(EXTERN_PIN2, OUTPUT);
 
     while (1) {
-        if (xQueueReceive(recVoice, &status, pdMS_TO_TICKS(2))) {
-            resetScreenTimer();
-            setScreenStatus(false);
-        }
+        xQueueReceive(peripheralEvents, &status, pdMS_TO_TICKS(2));
         loopScreen(status);
         loopPower();
         loopNetwork();
@@ -79,7 +60,7 @@ void setup()
 {
     bool ret = false;
 
-    recVoice = xQueueCreate(2, sizeof(uint8_t));
+    peripheralEvents = xQueueCreate(2, sizeof(LilyGoTrigger));
 
     Serial.begin(115200);
 
@@ -94,16 +75,14 @@ void setup()
     // Initialize the board power parameters
     setupPower();
 
-#ifdef  PLATFORMIO_ENV
-    //Activate the voice wake-up trigger, saying "Hi, ESP" into the microphone will trigger the screen wake-up
-    setupVoiceWakeup();
-#endif
+    // Start the microphone level test and sound trigger.
+    setupMicrophone();
 
     // Initialize the camera
     ret = setupCamera();
 
     // Initialize the screen
-    setupScreen(clearPheralsEvent, ret);
+    setupScreen(ret);
 
     while (!ret) {
         delay(1000);
@@ -124,9 +103,6 @@ void setup()
     // startCameraServer();
 
     xTaskCreate(loopPeripherals, "App/per", 4 * 1024, NULL, 8, NULL);
-
-    // Enable screen timeout off display
-    startScreenTimer();
 
 }
 

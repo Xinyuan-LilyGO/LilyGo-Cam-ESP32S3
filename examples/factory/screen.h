@@ -13,25 +13,17 @@
 #include <Wire.h>
 #include <U8g2lib.h>
 
-typedef   void (*screen_off_cb_t)(void);
-
-
 enum LilyGoTrigger {
     LILYGO_TRIGGER_FROM_NONE,
     LILYGO_TRIGGER_FROM_PIR,
-    LILYGO_TRIGGER_FROM_VOICE,
+    LILYGO_TRIGGER_FROM_MICROPHONE,
 };
 
 extern U8G2_SSD1306_128X64_NONAME_F_HW_I2C *u8g2;
 
 
-void setupScreen(screen_off_cb_t cb, bool camera);
+void setupScreen(bool camera);
 void loopScreen(LilyGoTrigger trigger);
-void setScreenStatus(bool en);
-void resetScreenTimer();
-void startScreenTimer();
-
-
 
 
 

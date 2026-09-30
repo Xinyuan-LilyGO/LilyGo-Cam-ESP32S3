@@ -53,8 +53,9 @@ void ButtonHandleEvent(AceButton *n, uint8_t eventType, uint8_t buttonState)
     Serial.printf("[AceButton][%u]  N:%d E:%u S:%u\n", millis(), n->getId(), eventType, buttonState);
     switch (n->getId()) {
     case 0:
-        if (eventType == AceButton::kEventClicked) {
-            nextFrameSize();
+        if (eventType == AceButton::kEventPressed) {
+            // nextFrameSize();
+            vflipCamera();
         } else if (eventType == AceButton::kEventDoubleClicked) {
 
         } else if (eventType ==  AceButton::kEventLongPressed) {

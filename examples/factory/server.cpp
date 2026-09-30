@@ -7,13 +7,16 @@
  *
  */
 
-#include <Wifi.h>
+#include <WiFi.h>
 #include <WebServer.h>
 #include <esp_camera.h>
+
+#include "server.h"
 
 WebServer server(80);
 
 bool startedServer = false;
+static volatile uint16_t streamFpsX10 = 0;
 
 void handle_jpg_stream(void)
 {
@@ -21,8 +24,12 @@ void handle_jpg_stream(void)
     String response = "HTTP/1.1 200 OK\r\n";
     response += "Content-Type: multipart/x-mixed-replace; boundary=frame\r\n\r\n";
     server.sendContent(response);
-    camera_fb_t *fb;
-    while (1) {
+    camera_fb_t *fb = nullptr;
+    uint32_t fpsWindowStart = millis();
+    uint16_t framesSent = 0;
+    streamFpsX10 = 0;
+
+    while (client.connected()) {
 
         // Serial.printf("%s :[%u] %u\n", __func__, millis(), esp_get_free_heap_size());
         yield();
@@ -32,28 +39,42 @@ void handle_jpg_stream(void)
             Serial.println("fb empty");
             continue;
         }
-        if (!client.connected())
-            break;
         response = "--frame\r\n";
         response += "Content-Type: image/jpeg\r\n\r\n";
         server.sendContent(response);
 
-        client.write(fb->buf, fb->len);
+        const size_t frameLength = fb->len;
+        const size_t bytesSent = client.write(fb->buf, frameLength);
         server.sendContent("\r\n");
+        esp_camera_fb_return(fb);
+        fb = nullptr;
+
+        if (bytesSent == frameLength) {
+            ++framesSent;
+        }
+
+        const uint32_t now = millis();
+        const uint32_t elapsed = now - fpsWindowStart;
+        if (elapsed >= 1000) {
+            streamFpsX10 = static_cast<uint32_t>(framesSent) * 10000 / elapsed;
+            framesSent = 0;
+            fpsWindowStart = now;
+        }
+
         if (!client.connected()) {
-            if (fb) {
-                esp_camera_fb_return(fb);
-            }
             Serial.println("client disconnected!");
             break;
-        }
-        if (fb) {
-            esp_camera_fb_return(fb);
         }
     }
     if (fb) {
         esp_camera_fb_return(fb);
     }
+    streamFpsX10 = 0;
+}
+
+uint16_t getStreamFpsX10()
+{
+    return streamFpsX10;
 }
 
 void handleNotFound()
@@ -79,37 +100,9 @@ void setupServer()
 
 }
 
-
 void loopServer()
 {
     if (startedServer) {
         server.handleClient();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

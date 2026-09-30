@@ -12,3 +12,4 @@
 bool setupCamera();
 void nextFrameSize();
 bool setupCameraTask(const QueueHandle_t frame_o);
+void vflipCamera();

@@ -8,15 +8,14 @@
  */
 #include "screen.h"
 #include "WiFi.h"
+#include "microphone.h"
 #include "network.h"
+#include "server.h"
 #include "esp_camera.h"
 #include "utilities.h"
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C *u8g2 = NULL;
-static TimerHandle_t timerHandle = NULL;
 static char buffer[256] = {0};
-static bool screenOff = false;
-static screen_off_cb_t off_cb = NULL;
 /*
   Draw a string with specified pixel offset.
   The offset can be negative.
@@ -59,17 +58,8 @@ void drawScrollString(int16_t offset, const char *s)
 }
 
 
-void screenTimerCallback(TimerHandle_t timer)
+void setupScreen(bool camera)
 {
-    if (off_cb) {
-        off_cb();
-    }
-    setScreenStatus(true);
-}
-
-void setupScreen(screen_off_cb_t cb, bool camera)
-{
-    off_cb = cb;
     Wire.beginTransmission(0x3C);
     if (Wire.endTransmission() == 0) {
         Serial.println("Started OLED");
@@ -108,50 +98,18 @@ void setupScreen(screen_off_cb_t cb, bool camera)
 }
 
 
-void startScreenTimer()
-{
-    if (!timerHandle) {
-        timerHandle = xTimerCreate("App/timer", pdMS_TO_TICKS(5000), true, NULL, screenTimerCallback);
-        xTimerStart(timerHandle, portMAX_DELAY);
-    }
-}
-
-void resetScreenTimer()
-{
-    xTimerReset(timerHandle, portMAX_DELAY);
-}
-
-void setScreenStatus(bool en)
-{
-    if (screenOff == en)return;
-    screenOff = en;
-    if (u8g2) {
-        u8g2->setPowerSave(en);
-    }
-}
-
 void loopScreen(LilyGoTrigger trigger)
 {
-    static  bool screenTrigger = false;
     static int16_t offset;
     static int16_t len ;
-    static LilyGoTrigger lastTrigger;
+    static uint32_t lastMeterUpdate;
 
     if (!u8g2) {
         return ;
     }
-    if (screenOff && trigger == LILYGO_TRIGGER_FROM_NONE) {
-        return;
-    }
 
     if (strlen(buffer) == 0) {
         u8g2->clearBuffer();
-
-        u8g2->setDrawColor(0);
-        u8g2->drawBox(0, 0, 128, 50);
-        u8g2->setDrawColor(1);
-        u8g2->setFont(u8g2_font_logisoso16_tr);
-        u8g2->drawStr(20, 30, "PirInvalid");
         String ipAddress = getIpAddress();
         if (ipAddress == "") {
             Serial.println("Ipaddress is empty");
@@ -170,28 +128,42 @@ void loopScreen(LilyGoTrigger trigger)
     }
     offset += 2;
 
-    if (lastTrigger != trigger) {
-        lastTrigger = trigger;
+    const uint32_t now = millis();
+    if (now - lastMeterUpdate >= 50) {
+        lastMeterUpdate = now;
+        const uint32_t level = getMicrophoneLevel();
+        const uint32_t limitedLevel = min<uint32_t>(level, MIC_LEVEL_METER_MAX);
+        const uint8_t barWidth = static_cast<uint64_t>(limitedLevel) * 116 /
+                                 MIC_LEVEL_METER_MAX;
+        const uint8_t thresholdX = 5 + static_cast<uint64_t>(
+            min<uint32_t>(MIC_SOUND_THRESHOLD, MIC_LEVEL_METER_MAX)) *
+            116 / MIC_LEVEL_METER_MAX;
+        char levelText[24];
+        char fpsText[16];
+        const uint16_t fpsX10 = getStreamFpsX10();
+        snprintf(levelText, sizeof(levelText), "RMS %lu",
+                 static_cast<unsigned long>(level));
+        snprintf(fpsText, sizeof(fpsText), "FPS %u.%u",
+                 fpsX10 / 10, fpsX10 % 10);
+
         u8g2->setDrawColor(0);
-        u8g2->drawBox(0, 0, 128, 50);
+        u8g2->drawBox(0, 0, 128, 49);
         u8g2->setDrawColor(1);
-        u8g2->setFont(u8g2_font_open_iconic_embedded_4x_t);
-        u8g2->drawGlyph(5, 42, 67);
-        u8g2->setFont(u8g2_font_timR10_tr);
-        if (trigger ==  LILYGO_TRIGGER_FROM_PIR) {
-            u8g2->drawStr(45, 35,  "Pir Trigger");
-        } else {
-            u8g2->drawStr(40, 35,  "Voice Trigger");
-
-
+        u8g2->setFont(u8g2_font_6x10_tf);
+        u8g2->drawStr(4, 10, "MIC LEVEL");
+        if (trigger == LILYGO_TRIGGER_FROM_PIR) {
+            u8g2->drawStr(105, 10, "PIR");
         }
+        u8g2->drawFrame(4, 15, 120, 17);
+        if (barWidth > 0) {
+            u8g2->drawBox(6, 17, barWidth, 13);
+        }
+        u8g2->drawVLine(thresholdX, 12, 3);
+        u8g2->drawStr(4, 45, levelText);
+        u8g2->drawStr(76, 45, fpsText);
     }
     u8g2->sendBuffer();
 }
-
-
-
-
 
 
 

@@ -11,6 +11,7 @@
 #include "esp_camera.h"
 
 static uint8_t frameSize = 0;
+static bool  vflip = true;
 static QueueHandle_t xQueueFrameO = NULL;
 
 void camera_task_hander(void *ptr)
@@ -40,8 +41,8 @@ bool setupCamera()
     config.pin_pclk = PCLK_GPIO_NUM;
     config.pin_vsync = VSYNC_GPIO_NUM;
     config.pin_href = HREF_GPIO_NUM;
-    config.pin_sscb_sda = SIOD_GPIO_NUM;
-    config.pin_sscb_scl = SIOC_GPIO_NUM;
+    config.pin_sccb_sda = SIOD_GPIO_NUM;
+    config.pin_sccb_scl = SIOC_GPIO_NUM;
     config.pin_pwdn = PWDN_GPIO_NUM;
     config.pin_reset = RESET_GPIO_NUM;
     config.xclk_freq_hz = 20000000;
@@ -82,28 +83,13 @@ bool setupCamera()
     }
 
     sensor_t *s = esp_camera_sensor_get();
-    // initial sensors are flipped vertically and colors are a bit saturated
-    if (s->id.PID == OV3660_PID) {
-        s->set_vflip(s, 1); // flip it back
-        s->set_brightness(s, 1); // up the brightness just a bit
-        s->set_saturation(s, -2); // lower the saturation
-    }
     // drop down frame size for higher initial frame rate
     if (config.pixel_format == PIXFORMAT_JPEG) {
         s->set_framesize(s, FRAMESIZE_QVGA);
     }
-
-#if defined(LILYGO_ESP32S3_CAM_PIR_VOICE)
-    if (s->id.PID == OV5640_PID) {
-        s->set_vflip(s, 0);
-    } else {
-        s->set_vflip(s, 1);
-        s->set_hmirror(s, 1);
-    }
-#endif
-
+    s->set_vflip(s, vflip);
+    s->set_hmirror(s, 1);
     frameSize = FRAMESIZE_QVGA;
-
     return true;
 }
 
@@ -117,6 +103,14 @@ bool setupCameraTask(const QueueHandle_t frame_o)
     return false;
 }
 
+void vflipCamera()
+{
+    sensor_t *sensor = esp_camera_sensor_get();
+    if(sensor){
+        vflip ^= 1;
+        sensor->set_vflip(sensor, vflip);
+    }
+}
 
 void nextFrameSize()
 {
@@ -129,7 +123,6 @@ void nextFrameSize()
     sensor_t *sensor = esp_camera_sensor_get();
     sensor->set_framesize(sensor, (framesize_t)frameSize);
 }
-
 
 
 

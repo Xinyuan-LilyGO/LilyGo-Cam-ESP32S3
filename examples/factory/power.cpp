@@ -14,6 +14,18 @@
 #include "utilities.h"
 XPowersPMU PMU;
 
+namespace {
+
+volatile bool pmuIrqPending = false;
+bool chargingLedOn = false;
+
+void IRAM_ATTR onPmuIrq()
+{
+    pmuIrqPending = true;
+}
+
+}  // namespace
+
 
 #define uS_TO_S_FACTOR 1000000ULL   /* Conversion factor for micro seconds to seconds */
 #define TIME_TO_SLEEP  60           /* Time ESP32 will go to sleep (in seconds) */
@@ -68,7 +80,7 @@ void setSleep(LilyGoWakeupSource source)
         while (!digitalRead(USER_BUTTON_PIN)) {
             delay(100);
         }
-        esp_sleep_enable_ext1_wakeup((1ULL << USER_BUTTON_PIN), ESP_EXT1_WAKEUP_ALL_LOW);
+        esp_sleep_enable_ext1_wakeup((1ULL << USER_BUTTON_PIN), ESP_EXT1_WAKEUP_ANY_LOW);
         esp_deep_sleep_start();
         break;
     case LILYGO_WAKEUP_SOURCE_PMU_PEKEY:
@@ -95,7 +107,7 @@ void setSleep(LilyGoWakeupSource source)
 
 bool setupPower()
 {
-    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, I2C_SDA, I2C_SCL)) {
+    if (!PMU.begin(Wire, AXP2101_SLAVE_ADDRESS, BOARD_I2C_SDA, BOARD_I2C_SCL)) {
         Serial.println("Init PMU failed!");
         return false;
     }
@@ -179,6 +191,12 @@ bool setupPower()
     // TS Pin detection must be disable, otherwise it cannot be charged
     PMU.disableTSPinMeasure();
 
+    // Use the charging indicator as a PWRKEY-controlled test LED.
+    PMU.setChargingLedMode(XPOWERS_CHG_LED_OFF);
+    chargingLedOn = false;
+    pinMode(PMU_INPUT_PIN, INPUT_PULLUP);
+    attachInterrupt(PMU_INPUT_PIN, onPmuIrq, FALLING);
+
     // Disable all interrupts
     PMU.disableIRQ(XPOWERS_AXP2101_ALL_IRQ);
     // Clear all interrupt flags
@@ -223,5 +241,19 @@ bool setupPower()
 
 void loopPower()
 {
-    //todo:
+    if (!pmuIrqPending) {
+        return;
+    }
+
+    pmuIrqPending = false;
+    PMU.getIrqStatus();
+
+    if (PMU.isPekeyShortPressIrq()) {
+        chargingLedOn = !chargingLedOn;
+        PMU.setChargingLedMode(chargingLedOn
+                               ? XPOWERS_CHG_LED_ON
+                               : XPOWERS_CHG_LED_OFF);
+    }
+
+    PMU.clearIrqStatus();
 }

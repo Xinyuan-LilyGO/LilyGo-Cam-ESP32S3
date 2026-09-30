@@ -20,8 +20,3 @@ enum LilyGoWakeupSource {
 bool setupPower();
 void loopPower();
 void setSleep(LilyGoWakeupSource source);
-
-
-
-
-

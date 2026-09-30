@@ -9,6 +9,8 @@
 
 #pragma once
 
+#include <stdint.h>
 
 void setupServer();
 void loopServer();
+uint16_t getStreamFpsX10();
