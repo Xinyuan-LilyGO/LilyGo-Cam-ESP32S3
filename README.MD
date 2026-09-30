@@ -1,4 +1,9 @@
-<h1 align = "center">✨ LilyGO Camera S3 ✨</h1>
+<div align="center" markdown="1">
+  <img src=".github/LilyGo_logo.png" alt="LilyGo logo" width="100"/>
+</div>
+
+<h1 align = "center">🌟LilyGO Camera S3🌟</h1>
+
 
 ## **English | [中文](README_CN.MD)**
 

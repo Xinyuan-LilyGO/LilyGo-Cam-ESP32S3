@@ -1,0 +1,82 @@
+name: Question
+description: File a question issue template to ask a question about our products.
+title: "[Question]: "
+labels: [triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search for related questions before asking
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: How would you categorize this issue?
+      multiple: true
+      options:
+        - Hardware
+        - MQTT
+        - HTTPS
+        - GNSS
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: hardware
+    attributes:
+      label: Hardware
+      description: What hardware are you encountering this issue on?
+      multiple: true
+      options:
+        - Not Applicable
+        - T-A7670-ESP32
+        - T-A7670G-ESP32-With-GPS
+        - T-Call-A7670-ESP32
+        - T-A7608-ESP32
+        - T-A7608-ESP32S3
+        - T-SIM7670G-ESP32S3
+        - T-PCIE-A7670-ESP32
+        - T-ETH-ELite-A7670
+        - T-SIM7000G-ESP32
+        - T-SIM7070G-ESP32
+        - T-SIM7600 Series-ESP32
+
+    validations:
+      required: true
+
+  - type: input
+    id: pn_number
+    attributes:
+      label: PN Number
+      description: The PN number is located on the modem label..
+      placeholder: xx-xxxxx-xxxxx
+    validations:
+      required: true
+
+  - type: textarea
+    id: version
+    attributes:
+      label: Firmware Version
+      description: The firmware version can be queried by sending AT+SIMCOMATI. Please be sure to paste the complete AT+SIMCOMATI response information, removing the IMEI line. This is an important basis for determining your hardware version.
+      render: Shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: body
+    attributes:
+      label: Description
+      description: Please provide details on what steps you performed for this to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: If you have any log output to help in diagnosing your bug, please provide it here.
+      render: Shell
+    validations:
+      required: false
