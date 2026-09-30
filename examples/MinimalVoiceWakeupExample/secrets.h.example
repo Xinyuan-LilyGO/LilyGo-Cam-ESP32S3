@@ -1,9 +1,0 @@
-// If using station mode, please fill in the wifi ssid and password here, cahnge as per your wireless settings
-#define WIFI_SSID1 "ssid_from_AP_1"
-#define WIFI_SSID_PASSWORD1 "your_password_for_AP_1"
-
-#define WIFI_SSID2 "ssid_from_AP_2"
-#define WIFI_SSID_PASSWORD2 "your_password_for_AP_2"
-
-#define WIFI_SSID3 "ssid_from_AP_3"
-#define WIFI_SSID_PASSWORD3 "your_password_for_AP_3"
