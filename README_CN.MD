@@ -1,10 +1,10 @@
-
-
-
 <h1 align = "center">✨ LilyGO Camera S3 ✨</h1>
 
 ## **[English](README.MD) | 中文**
 
+## News
+
+* CameraS3 有两个版本,v1.6版本为I2S接口麦克风,v1.7版本为PDM接口麦克风
 
 ## 1️⃣ Examples preview
 

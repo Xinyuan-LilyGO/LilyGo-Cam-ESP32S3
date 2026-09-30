@@ -2,6 +2,10 @@
 
 ## **English | [中文](README_CN.MD)**
 
+## News
+
+ *There are two versions of T-CameraS3: version v1.6 features an I2S interface microphone, while version v1.7 features a PDM interface microphone.
+
 ## 1️⃣ Examples preview
 
 ```text
